@@ -19,7 +19,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
-services:
+
   mongodb_container:
     image: mongo:latest
     environment:
