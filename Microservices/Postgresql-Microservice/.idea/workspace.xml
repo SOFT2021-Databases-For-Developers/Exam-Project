@@ -3,8 +3,43 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6b484f8-02c9-48a9-b82a-9bd454720646" name="Default Changelist" comment="" />
+    <list default="true" id="b6b484f8-02c9-48a9-b82a-9bd454720646" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/RedisMicroservicesApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/dto/SessionObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/redismapper/SessionManagement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/redismapper/SessionManangementImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/test/java/redis/redismicroservices/RedisMicroservicesApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/test/java/redis/redismicroservices/redismapper/SessionManagementTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Postgresql-Microservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Postgresql-Microservice.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,14 +53,18 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Users\thoma\.m2\wrapper\dists\apache-maven-3.8.1-bin\2l5mhf2pq2clrde7f7qp1rdt5m\apache-maven-3.8.1" />
+        <option name="mavenHome" value="C:\Users\Jbakke\.m2\wrapper\dists\apache-maven-3.8.1-bin\2l5mhf2pq2clrde7f7qp1rdt5m\apache-maven-3.8.1" />
       </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectId" id="1skb5amj0Nf8bdj1hFn0CZ7ZCrI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,17 +75,20 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -68,11 +110,23 @@
       <option name="presentableId" value="Default" />
       <updated>1621419354973</updated>
       <workItem from="1621419356532" duration="9756000" />
+      <workItem from="1621454810801" duration="1597000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="811" y="384" width="394" height="217" key="#Assign_Data_Sources" timestamp="1621420032673">
