@@ -1,0 +1,36 @@
+
+H
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
+S
+java:S1128"=Remove this unused import 'app.mongo.models.order.OrderLine'.(şŸ©ô
+A
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü
+a
+java:S1128"FRemove this unused import 'app.mongo.controllers.game.GameApiFetcher'.(ÚŒúğúÿÿÿÿ
+U
+java:S1128"?Remove this unused import 'app.mongo.models.customer.Customer'.(¢¶¢
+L
+java:S1128"6Remove this unused import 'app.mongo.helpers.Encrypt'.(Ï’Ñ•
+J
+java:S1128"4Remove this unused import 'java.util.logging.Level'.(…µÛ¶
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+Z
+java:S1128"DRemove this unused import 'app.mongo.repositories.game.GameService'.(ŞÌê‹
+b
+java:S1128"LRemove this unused import 'app.mongo.repositories.customer.CustomerService'.(¢Ë¤Š
+P
+java:S1128	":Remove this unused import 'app.mongo.models.order.Status'.(ïˆˆ
+a
+java:S1128"FRemove this unused import 'app.mongo.repositories.order.OrderService'.(ò¯†Àúÿÿÿÿ
+e
+java:S1128"JRemove this unused import 'app.mongo.repositories.order.OrderLineService'.(ê¨„¿øÿÿÿÿ
+R
+java:S1128"7Remove this unused import 'app.mongo.models.game.Game'.(ë‚½ÿÿÿÿÿ
+T
+java:S1128"9Remove this unused import 'app.mongo.models.order.Order'.(ì÷ÕÀûÿÿÿÿ
+7
+java:S1116)"Remove this empty statement.(ôŸìúÿÿÿÿ
+V	java:S125/"<This block of commented-out lines of code should be removed.(ò‰ëéıÿÿÿÿ
+@
+java:S1068!"*Remove this unused "LOGGER" private field.(éÊğû
