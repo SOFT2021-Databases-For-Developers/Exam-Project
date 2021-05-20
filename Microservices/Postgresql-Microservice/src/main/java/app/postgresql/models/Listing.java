@@ -10,11 +10,10 @@ import java.util.Date;
 @Table(name = "listing")
 
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(
-                name="findAllListings",
-                procedureName = "FIND_ALL_LISTINGS",
-                resultClasses = Listing.class
-        )
+        @NamedStoredProcedureQuery(name = "listing.findAllByMakeAndModel",
+                procedureName = "FIND_ALL_LISTINGS_BY_MAKE_AND_MODEL", parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "_make", type = String.class),
+                @StoredProcedureParameter(mode = ParameterMode.OUT, name = "_model", type = String.class)})
 })
 
 public class Listing implements Serializable {

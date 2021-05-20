@@ -1,4 +1,4 @@
-package app.postgresql.repositories;
+package app.postgresql.repositories.listing;
 
 import app.postgresql.models.Listing;
 import org.springframework.data.repository.CrudRepository;
