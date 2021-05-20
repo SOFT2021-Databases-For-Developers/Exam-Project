@@ -24,23 +24,21 @@
   <component name="ChangeListManager">
     <list default="true" id="b6b484f8-02c9-48a9-b82a-9bd454720646" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/models/Make.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/make/MakeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/make/MakeRepositoryCustom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/make/MakeRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/RedisMicroservicesApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/dto/SessionObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/redismapper/SessionManagement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/java/redis/redismicroservices/redismapper/SessionManangementImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/test/java/redis/redismicroservices/RedisMicroservicesApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Redis-Microservices/src/test/java/redis/redismicroservices/redismapper/SessionManagementTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/postgresql/PostgresqlApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/PostgresqlApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/postgresql/controllers/ListingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/controllers/ListingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/postgresql/models/Listing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/models/Listing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/ListingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/listing/ListingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/ListingRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/listing/ListingRepositoryCustom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/ListingRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/postgresql/repositories/listing/ListingRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/postgresql/PostgresqlApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/postgresql/PostgresqlApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/postgresql/controllers/ListingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/postgresql/controllers/ListingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/postgresql/models/Listing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/postgresql/models/Listing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/postgresql/repositories/ListingRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/postgresql/repositories/ListingRepositoryCustom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/postgresql/repositories/ListingRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Postgresql-Microservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Postgresql-Microservice.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +59,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Users\thoma\.m2\wrapper\dists\apache-maven-3.8.1-bin\2l5mhf2pq2clrde7f7qp1rdt5m\apache-maven-3.8.1" />
+        <option name="mavenHome" value="C:\Users\Jbakke\.m2\wrapper\dists\apache-maven-3.8.1-bin\2l5mhf2pq2clrde7f7qp1rdt5m\apache-maven-3.8.1" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -123,7 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621419354973</updated>
       <workItem from="1621419356532" duration="9756000" />
-      <workItem from="1621493867879" duration="8444000" />
+      <workItem from="1621454810801" duration="1597000" />
     </task>
     <servers />
   </component>
