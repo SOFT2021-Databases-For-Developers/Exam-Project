@@ -1,6 +1,8 @@
 package app.postgresql.models;
 import lombok.Data;
 import lombok.Generated;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,30 +31,57 @@ public class Listing implements Serializable {
     private String description;
     @Column(name = "price")
     private float price;
-    @Column(name = "make_name")
-    private String make_name;
-    @Column(name = "model_name")
-    private String model_name;
-    @Column(name = "model_year")
-    private int model_year;
+    @Column(name = "km")
+    private int km;
+    @Column(name = "car_id")
+    private int car_id;
     @Column(name = "created_on")
     private Date created_on;
 
     public Listing() {
     }
 
-    public Listing(String seller_id, String title, String description, float price, String make_name, String model_name, int model_year) {
+    public Listing(String seller_id, String title, String description, int km, int car_id, float price, Date created_on) {
         this.seller_id = seller_id;
         this.title = title;
         this.description = description;
+        this.km = km;
+        this.car_id = car_id;
         this.price = price;
-        this.make_name = make_name;
-        this.model_name = model_name;
-        this.model_year = model_year;
+        this.created_on = created_on;
+    }
+
+    public Listing(int id, String seller_id, String title, String description, int km, int car_id, float price, Date created_on) {
+        this.id = id;
+        this.seller_id = seller_id;
+        this.title = title;
+        this.description = description;
+        this.km = km;
+        this.car_id = car_id;
+        this.price = price;
+        this.created_on = created_on;
+    }
+
+    @Override
+    public String toString() {
+        return "Listing{" +
+                "id=" + id +
+                ", seller_id='" + seller_id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", km=" + km +
+                ", car_id=" + car_id +
+                ", price=" + price +
+                ", created_on=" + created_on +
+                '}';
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSeller_id() {
@@ -79,6 +108,22 @@ public class Listing implements Serializable {
         this.description = description;
     }
 
+    public int getKm() {
+        return km;
+    }
+
+    public void setKm(int km) {
+        this.km = km;
+    }
+
+    public int getCar_id() {
+        return car_id;
+    }
+
+    public void setCar_id(int car_id) {
+        this.car_id = car_id;
+    }
+
     public float getPrice() {
         return price;
     }
@@ -87,46 +132,11 @@ public class Listing implements Serializable {
         this.price = price;
     }
 
-    public String getMake_name() {
-        return make_name;
-    }
-
-    public void setMake_name(String make_name) {
-        this.make_name = make_name;
-    }
-
-    public String getModel_name() {
-        return model_name;
-    }
-
-    public void setModel_name(String model_name) {
-        this.model_name = model_name;
-    }
-
-    public int getModel_year() {
-        return model_year;
-    }
-
-    public void setModel_year(int model_year) {
-        this.model_year = model_year;
-    }
-
     public Date getCreated_on() {
         return created_on;
     }
 
-    @Override
-    public String toString() {
-        return "Listing{" +
-                "id=" + id +
-                ", seller_id='" + seller_id + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", make_name='" + make_name + '\'' +
-                ", model_name='" + model_name + '\'' +
-                ", model_year=" + model_year +
-                ", created_on=" + created_on +
-                '}';
+    public void setCreated_on(Date created_on) {
+        this.created_on = created_on;
     }
 }

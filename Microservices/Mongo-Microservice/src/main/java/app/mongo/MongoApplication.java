@@ -46,7 +46,7 @@ public class MongoApplication implements CommandLineRunner {
     public void run(String ...args) throws Exception{
         //for (User u : repo.findall())
             //System.out.println(u);
-        User user = new User("Jonas","Jojo","hey","Mail@mail.dk","paspas");
+        User user = new User("Thomas","Thomas","Ebsen","thomas@ebsen.dk",Encrypt.hashPassword("root1234"));
         repo.save(user);
     }
 

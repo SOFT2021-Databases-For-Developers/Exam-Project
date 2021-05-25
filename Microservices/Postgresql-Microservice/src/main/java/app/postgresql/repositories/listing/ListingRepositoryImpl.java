@@ -14,7 +14,7 @@ public class ListingRepositoryImpl implements ListingRepositoryCustom {
 
     @Override
     public List<Listing> findAll() {
-        return em.createQuery("SELECT l from Listing l").getResultList();
+        return em.createQuery("SELECT l from Listing l").setMaxResults(50).getResultList();
     }
 
 //    @Override

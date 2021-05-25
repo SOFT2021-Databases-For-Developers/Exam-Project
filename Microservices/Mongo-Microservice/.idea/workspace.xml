@@ -49,8 +49,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Microservice-Discovery-Application" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager" selected="Spring Boot.MongoApplication">
     <configuration name="MongoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -90,10 +90,60 @@
       <workItem from="1621432512931" duration="3967000" />
       <workItem from="1621455578020" duration="670000" />
       <workItem from="1621502865235" duration="27000" />
+      <workItem from="1621611691347" duration="1443000" />
+      <workItem from="1621767872901" duration="616000" />
+      <workItem from="1621933592397" duration="608000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="692" y="248" key="FileChooserDialogImpl" timestamp="1621611847938">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state x="692" y="248" key="FileChooserDialogImpl/0.0.1825.987@0.0.1825.987" timestamp="1621611847938" />
+    <state width="1781" height="264" key="GridCell.Tab.0.bottom" timestamp="1621616383133">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.0.bottom/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
+    <state width="1781" height="264" key="GridCell.Tab.0.center" timestamp="1621616383133">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.0.center/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
+    <state width="1781" height="264" key="GridCell.Tab.0.left" timestamp="1621616383129">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.0.left/0.0.1825.987@0.0.1825.987" timestamp="1621616383129" />
+    <state width="1781" height="264" key="GridCell.Tab.0.right" timestamp="1621616383133">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.0.right/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
+    <state width="1781" height="264" key="GridCell.Tab.1.bottom" timestamp="1621616383134">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.1.bottom/0.0.1825.987@0.0.1825.987" timestamp="1621616383134" />
+    <state width="1781" height="264" key="GridCell.Tab.1.center" timestamp="1621616383133">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.1.center/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
+    <state width="1781" height="264" key="GridCell.Tab.1.left" timestamp="1621616383133">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.1.left/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
+    <state width="1781" height="264" key="GridCell.Tab.1.right" timestamp="1621616383134">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state width="1781" height="264" key="GridCell.Tab.1.right/0.0.1825.987@0.0.1825.987" timestamp="1621616383134" />
+    <state x="420" y="138" key="SettingsEditor" timestamp="1621611715654">
+      <screen x="0" y="0" width="1825" height="987" />
+    </state>
+    <state x="420" y="138" key="SettingsEditor/0.0.1825.987@0.0.1825.987" timestamp="1621611715654" />
   </component>
 </project>

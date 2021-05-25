@@ -97,6 +97,31 @@ select * from listing where seller_id = _id;
 $$
 language sql;
 
+-- FIND ALL LISTINGS BY MAKE AND MODEL --
+CREATE OR REPLACE FUNCTION FIND_ALL_LISTINGS_BY_MAKE_AND_MODEL(
+	IN _make varchar(255),
+	IN _model varchar(255)
+)
+  returns setof listing
+as
+$$
+select * from listing where make_name = _make and model_name = _model;
+$$
+language sql;
+
+-- FIND ALL LISTINGS --
+CREATE OR REPLACE FUNCTION FIND_ALL_LISTINGS(
+	_make varchar(255),
+	_model varchar(255)
+)
+  returns setof listing
+as
+$$
+select * from listing where make_name = _make and model_name = _model;
+$$
+language sql;
+
+
 
 
 -- INSERT MODEL PROCEDURE --
@@ -129,6 +154,8 @@ CALL INSERT_MODEL('C1', 'Volvo');
 CALL INSERT_LISTING('60a3d5347f39c4bfa873c580', 'Brand New Mercedes A1 from 2021', 'This is a brand new Mercedes A1 that i bought in early 2021, but im selling it cuz im a stupid cunt', 420000, 'Mercedes', 'A1', 2021);
 CALL INSERT_LISTING('60a3d5347f39c4bfa873c580', 'Used Volvo A1 C1 2018', 'This is a used volvo from 2018', 26000, 'Volvo', 'C1', 2018);
 CALL INSERT_LISTING('60a3d5347f39c4bfa873c589', 'Volvo X1', 'Selling my old volvo x1 cheap', 4700, 'Volvo', 'X1', 2004);
+CALL INSERT_LISTING('60a3d5347f39c4bfa873c580', 'Volvo X1', 'Selling my volvo x1 just because you know', 5300, 'Volvo', 'X1', 2004);
 
+select * from FIND_ALL_LISTINGS_BY_SELLER_ID('60a3d5347f39c4bfa873c580');
 
-select * from FIND_ALL_LISTINGS_BY_SELLER_ID('60a3d5347f39c4bfa873c580')
+select * from FIND_ALL_LISTINGS_BY_MAKE_AND_MODEL('Volvo', 'X1');
