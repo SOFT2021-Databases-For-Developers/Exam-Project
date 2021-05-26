@@ -82,4 +82,37 @@ class SessionManagementTest {
         SessionObject result = sessionManagement.getSessionForUser(username);
         assertEquals(result.getShoppingCart().size(), 2);
     }
+
+    @Test
+    void deleteSessionForUser() {
+        String username = "Jonatan";
+        List<String> shoppingCart = new ArrayList<>();
+        shoppingCart.add("Item 1");
+        shoppingCart.add("Item 2");
+        boolean createSession = sessionManagement.createSessionForUser(username, shoppingCart);
+        assertTrue(createSession);
+        boolean deleteSession = sessionManagement.deleteSessionForUser(username);
+        assertTrue(deleteSession);
+        SessionObject session = sessionManagement.getSessionForUser(username);
+        assertEquals(session.getShoppingCart().size(), 0);
+    }
+
+    @Test
+    void overwriteUserSession() {
+        String username = "Jonatan";
+        List<String> shoppingCart = new ArrayList<>();
+        shoppingCart.add("Item 1");
+        shoppingCart.add("Item 1");
+        boolean createSessionResult = sessionManagement.createSessionForUser(username, shoppingCart);
+        assertTrue(createSessionResult);
+        SessionObject result = sessionManagement.getSessionForUser(username);
+        assertEquals(result.getShoppingCart().size(), 2);
+
+        shoppingCart.add("Item 3");
+        createSessionResult = sessionManagement.createSessionForUser(username, shoppingCart);
+        assertTrue(createSessionResult);
+        result = sessionManagement.getSessionForUser(username);
+        assertEquals(result.getShoppingCart().size(), 3);
+
+    }
 }
