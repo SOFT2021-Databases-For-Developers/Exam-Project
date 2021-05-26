@@ -30,7 +30,7 @@ public class Item implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" +
+        return "item{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
