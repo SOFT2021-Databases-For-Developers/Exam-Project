@@ -1,29 +1,39 @@
 package app.postgresql.controllers;
 
-import app.postgresql.models.Make;
+import app.postgresql.models.Listing;
 import app.postgresql.models.Model;
-import app.postgresql.repositories.model.ModelRepository;
+import app.postgresql.repositories.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
-@RequestMapping("/models")
+@RequestMapping("models")
 public class ModelController {
     @Autowired
-    ModelRepository repo;
+    private ModelRepository modelRepository;
 
-    @GetMapping("")
-    public List<Model> findAll() {
-        return repo.findAll();
+    @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<Collection<Model>> getModels() {
+        Collection<Model> l = modelRepository.findAll();
+        return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
-    @PostMapping("/new/{make}/{model}")
-    public Model createMake(@PathVariable String make, @PathVariable String model) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<Model> getPerson(@PathVariable String name) {
         try {
-            Model m = new Model(model, make);
-            return repo.save(m);
+            Model l = modelRepository.findByName(name);
+
+            if (l != null) {
+                return new ResponseEntity<>(l, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
         } catch (Exception ex) {
             throw ex;
         }

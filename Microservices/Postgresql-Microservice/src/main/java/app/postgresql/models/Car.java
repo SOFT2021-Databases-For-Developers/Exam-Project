@@ -1,36 +1,30 @@
 package app.postgresql.models;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "car")
+@Table(name = "cars")
 public class Car implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String make;
-    private String model;
-    private String category;
-    private Integer year;
+
+    @ManyToOne
+    @JoinColumn (name="make_id")
+    private Make make;
+
+    @ManyToOne
+    @JoinColumn (name="model_id")
+    private Model model;
 
     public Car() {
     }
 
-    public Car(String make, String model, String category, Integer year) {
+    public Car(Make make, Model model) {
         this.make = make;
         this.model = model;
-        this.category = category;
-        this.year = year;
-    }
-
-    public Car(int id, String make, String model, String category, Integer year) {
-        this.id = id;
-        this.make = make;
-        this.model = model;
-        this.category = category;
-        this.year = year;
     }
 
     public int getId() {
@@ -41,46 +35,30 @@ public class Car implements Serializable {
         this.id = id;
     }
 
-    public String getMake() {
+    public Make getMake() {
         return make;
     }
 
-    public void setMake(String make) {
+    public void setMake(Make make) {
         this.make = make;
     }
 
-    public String getModel() {
+    public Model getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(Model model) {
         this.model = model;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 
     @Override
     public String toString() {
         return "Car{" +
                 "id=" + id +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", category='" + category + '\'' +
-                ", year=" + year +
+                ", make=" + make +
+                ", model=" + model +
                 '}';
     }
 }
+
+

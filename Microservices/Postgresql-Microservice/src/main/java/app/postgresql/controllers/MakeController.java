@@ -1,50 +1,39 @@
 package app.postgresql.controllers;
 
-import app.postgresql.models.Listing;
 import app.postgresql.models.Make;
-import app.postgresql.repositories.listing.ListingRepository;
-import app.postgresql.repositories.make.MakeRepository;
+import app.postgresql.models.Model;
+import app.postgresql.repositories.MakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
-@RequestMapping("/makes")
+@RequestMapping("makes")
 public class MakeController {
-
     @Autowired
-    MakeRepository repo;
+    private MakeRepository makeRepository;
 
-    @GetMapping("")
+    @RequestMapping(method = RequestMethod.GET)
     @CrossOrigin(origins = "*")
-    public List<Make> findAllL() {
-        return repo.findAll();
+    public ResponseEntity<Collection<Make>> getModels() {
+        Collection<Make> l = makeRepository.findAll();
+        return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
-    @GetMapping("/{name}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "*")
-    public Make findByName(@PathVariable String name) {
-        return repo.findByName(name);
-    }
-
-    @PostMapping("")
-    @CrossOrigin(origins = "*")
-    public Make createMake(@RequestBody Make make) {
+    public ResponseEntity<Make> getPerson(@PathVariable String name) {
         try {
-            return repo.save(make);
-        } catch (Exception ex) {
-            throw ex;
-        }
-    }
+            Make l = makeRepository.findByName(name);
 
-    @PostMapping("/new/{make}")
-    @CrossOrigin(origins = "*")
-    public Make createMake(@PathVariable String make) {
-        try {
-            Make m = new Make(make);
-            return repo.save(m);
+            if (l != null) {
+                return new ResponseEntity<>(l, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
         } catch (Exception ex) {
             throw ex;
         }

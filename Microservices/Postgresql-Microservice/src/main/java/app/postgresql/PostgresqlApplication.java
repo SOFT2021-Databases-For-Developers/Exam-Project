@@ -1,38 +1,44 @@
 package app.postgresql;
 
-import app.postgresql.helpers.JsonReader;
 import app.postgresql.helpers.Generator;
+import app.postgresql.helpers.JsonReader;
 import app.postgresql.models.Car;
 import app.postgresql.models.Listing;
+import app.postgresql.models.Make;
 import app.postgresql.models.Model;
-import app.postgresql.repositories.car.CarRepository;
-import app.postgresql.repositories.listing.ListingRepository;
-import app.postgresql.repositories.make.MakeRepository;
-import app.postgresql.repositories.model.ModelRepository;
+import app.postgresql.repositories.CarRepository;
+import app.postgresql.repositories.ListingRepository;
+import app.postgresql.repositories.MakeRepository;
+import app.postgresql.repositories.ModelRepository;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class PostgresqlApplication implements CommandLineRunner {
 
-
     @Autowired
-    private MakeRepository makeRepo;
-    private ListingRepository listingRepo;
-    private ModelRepository modelRepo;
+    private ListingRepository listingRepository;
     private CarRepository carRepository;
+    private ModelRepository modelRepository;
+    private MakeRepository makeRepository;
 
-    PostgresqlApplication(MakeRepository makeRepo, ListingRepository listingRepo, ModelRepository modelRepo, CarRepository carRepository) {
-        this.makeRepo = makeRepo;
-        this.listingRepo = listingRepo;
-        this.modelRepo = modelRepo;
+    public PostgresqlApplication(ListingRepository listingRepository, CarRepository carRepository, ModelRepository modelRepository, MakeRepository makeRepository) {
+        this.listingRepository = listingRepository;
         this.carRepository = carRepository;
+        this.modelRepository = modelRepository;
+        this.makeRepository = makeRepository;
     }
-
 
     public static void main(String[] args) {
         SpringApplication.run(PostgresqlApplication.class, args);
@@ -44,61 +50,68 @@ public class PostgresqlApplication implements CommandLineRunner {
         //PopulateDB(true, 10, true);
         //listingRepo.saveAll(GenerateFakeListings(true, 1000));
 
-        int count = 0;
-        for (Listing l : listingRepo.findAll()) {
-            count++;
-            System.out.print(count + " ");
-            System.out.println(l);
-        }
+        //listingRepository.deleteAll();
+        //carRepository.deleteAll();
+        //modelRepository.deleteAll();
+        //makeRepository.deleteAll();
+        //makeRepository.saveAll(JsonReader.getMakesFromJson());
+        //modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
+        //carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
+        //listingRepository.saveAll(GenerateFakeListings(true, 10000));
+
+
+
+
+
+
+
+
+        //listingNewRepository.save(new ListingNew("adskask13123Jjasd", "a car","a car im sellin",6969,99,c, new Date()));
+
+
 
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-
-
-
         System.out.println("Duration: " + duration/1000 + " seconds.");
-
-        //listingRepo.save(new Listing("AJSDAR1231234JJ", "New", "New", 100, 871907,  99, new Date()));
-
 
     }
 
-    public List<Listing> GenerateFakeListings(boolean run, int amount) {
+
+    public Collection<Listing> GenerateFakeListings(boolean run, int amount) {
         List<Listing> listings = new ArrayList<>();
         if (run) {
-            List<Car> cars = carRepository.findAll();
+            List<Car> cars = (List<Car>) carRepository.findAll();
             Random random = new Random();
             for (int i = 0; i < amount; i++) {
                 int rndIndex = (int)(Math.random() * cars.size());
                 Car c = cars.get(rndIndex);
+
                 Listing l = new Listing();
                 l.setSeller_id(Generator.GenerateRandomAlphanumericString(24));
-                l.setCar_id(c.getId());
+                l.setCar(c);
                 l.setPrice(random.nextInt(99999));
                 l.setCreated_on(new Date());
                 l.setKm(random.nextInt(99999));
-                l.setDescription(Generator.GenerateListingDescription(c.getMake(), c.getModel(), c.getCategory(), c.getYear(), l.getKm()));
-                l.setTitle(Generator.GenerateListingTitle(c.getMake(), c.getModel(), c.getCategory(), c.getYear(), l.getKm()));
+                l.setDescription(Generator.GenerateListingDescription(c.getMake().getName(), c.getModel().getName(), c.getModel().getYear(), l.getKm()));
+                l.setTitle(Generator.GenerateListingTitle(c.getMake().getName(), c.getModel().getName(), c.getModel().getYear(), l.getKm()));
                 listings.add(l);
             }
         }
         return listings;
     }
-
-    private void PopulateDB(boolean run, int amount_to_add, boolean delete_first) {
-        if(delete_first == true) {
-            listingRepo.deleteAll();
-            carRepository.deleteAll();
-            modelRepo.deleteAll();
-            makeRepo.deleteAll();
-        }
-        if(run == true) {
-            makeRepo.saveAll(JsonReader.getMakesFromJson());
-            modelRepo.saveAll(JsonReader.getModelsAndMakesFromJson());
-            carRepository.saveAll(JsonReader.getCarsFromJson());
-            listingRepo.saveAll(GenerateFakeListings(true, amount_to_add));
-        }
-
-
-    }
+//
+//    private void PopulateDB(boolean run, int amount_to_add, boolean delete_first) {
+//        if(delete_first == true) {
+//            listingRepo.deleteAll();
+//            carRepository.deleteAll();
+//            modelRepo.deleteAll();
+//            makeRepo.deleteAll();
+//        }
+//        if(run == true) {
+//            makeRepo.saveAll(JsonReader.getMakesFromJson());
+//            modelRepo.saveAll(JsonReader.getModelsAndMakesFromJson());
+//            carRepository.saveAll(JsonReader.getCarsFromJson());
+//            listingRepo.saveAll(GenerateFakeListings(true, amount_to_add));
+//        }
+//    }
 }

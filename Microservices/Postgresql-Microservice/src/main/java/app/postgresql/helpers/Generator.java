@@ -1,8 +1,5 @@
 package app.postgresql.helpers;
 
-import app.postgresql.models.Car;
-import app.postgresql.models.Listing;
-
 import java.util.Random;
 
 public class Generator {
@@ -32,21 +29,19 @@ public class Generator {
         return generatedString;
     }
 
-    public static String GenerateListingTitle(String make, String model, String category, int year, int km) {
+    public static String GenerateListingTitle(String make, String model, int year, int km) {
         StringBuilder sb=new StringBuilder();
         sb.append(String.format("%s ", make));
         sb.append(String.format("%s ", model));
-        sb.append(String.format("%d ", year));
-        sb.append(String.format("%s, ", category));
+        sb.append(String.format("%d, ", year));
         sb.append(String.format("%d km", km));
         return sb.toString();
     }
 
-    public static String GenerateListingDescription(String make, String model, String category, int year, int km) {
+    public static String GenerateListingDescription(String make, String model, int year, int km) {
         StringBuilder sb=new StringBuilder();
         sb.append(String.format("Selling my %s ", make));
         sb.append(String.format("%s ", model));
-        sb.append(String.format("%s ", category));
         sb.append(String.format("from %d. ", year));
         sb.append(String.format("It has driven only %d km, and I am sure you will get many more our of it.", km));
         return sb.toString();

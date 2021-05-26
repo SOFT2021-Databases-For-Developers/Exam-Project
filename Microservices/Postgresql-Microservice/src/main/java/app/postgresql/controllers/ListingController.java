@@ -1,36 +1,44 @@
 package app.postgresql.controllers;
 
 import app.postgresql.models.Listing;
-import app.postgresql.repositories.listing.ListingRepository;
+import app.postgresql.repositories.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
-@CrossOrigin(origins = "*")
-@RequestMapping("/listings")
+@RequestMapping("listings")
 public class ListingController {
 
     @Autowired
-    ListingRepository repo;
+    private ListingRepository listingRepository;
 
-
-    @GetMapping("")
+    @RequestMapping(method = RequestMethod.GET)
     @CrossOrigin(origins = "*")
-    public List<Listing> findAllL() {
-        return repo.findAll();
+    public ResponseEntity<Collection<Listing>> getListings() {
+        Collection<Listing> l = listingRepository.findAll();
+        for (Listing x : l) {
+            System.out.println(x);
+        }
+        return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "*")
-    public Optional<Listing> findById(@PathVariable Integer id) {
-        return repo.findById(id);
-    }
+    public ResponseEntity<Listing> getPerson(@PathVariable int id) {
+        try {
+            Listing l = listingRepository.findOneByid(id);
 
-    @GetMapping("/{make}/{model}")
-    @CrossOrigin(origins = "*")
-    public List<Listing> findAllByMakeAndModel(@PathVariable String make, @PathVariable String model) {
-        return null;
+            if (l != null) {
+                return new ResponseEntity<>(l, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 }
