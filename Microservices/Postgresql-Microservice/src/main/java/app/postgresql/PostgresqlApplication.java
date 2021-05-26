@@ -17,6 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.io.Reader;
 import java.nio.file.Files;
@@ -61,7 +65,14 @@ public class PostgresqlApplication implements CommandLineRunner {
 
 
 
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 100);
+        Pageable sortByDate = PageRequest.of(0, 10, Sort.by("price").descending());
+        Page<Listing> allListings = listingRepository.findAll(sortByDate);
 
+
+        for (Listing l : allListings) {
+            System.out.println(l.getId() + ", " + l.getPrice());
+        }
 
 
 
@@ -89,7 +100,7 @@ public class PostgresqlApplication implements CommandLineRunner {
                 Listing l = new Listing();
                 l.setSeller_id(Generator.GenerateRandomAlphanumericString(24));
                 l.setCar(c);
-                l.setPrice(random.nextInt(99999));
+                l.setPrice(random.nextFloat() * (100 + 100000));
                 l.setCreated_on(new Date());
                 l.setKm(random.nextInt(99999));
                 l.setDescription(Generator.GenerateListingDescription(c.getMake().getName(), c.getModel().getName(), c.getModel().getYear(), l.getKm()));
