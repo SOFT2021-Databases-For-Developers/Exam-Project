@@ -24,22 +24,22 @@ public class UserOrder {
     private User user;
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinProperty(name = "userorderlines")
-    private List<UserOrderLine> orderLines;
+    private List<UserOrderLine> userorderLines;
 
     public UserOrder() {
     }
 
-    public UserOrder(String id, Date createdAt, User user, List<UserOrderLine> orderLines) {
+    public UserOrder(String id, Date createdAt, User user, List<UserOrderLine> userorderLines) {
         this.id = id;
         this.createdAt = createdAt;
         this.user = user;
-        this.orderLines = orderLines;
+        this.userorderLines = userorderLines;
     }
 
-    public UserOrder(Date createdAt, User user, List<UserOrderLine> orderLines) {
+    public UserOrder(Date createdAt, User user, List<UserOrderLine> userorderLines) {
         this.createdAt = createdAt;
         this.user = user;
-        this.orderLines = orderLines;
+        this.userorderLines = userorderLines;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class UserOrder {
                 "id='" + id + '\'' +
                 ", createdAt=" + createdAt +
                 ", user=" + user +
-                ", orderLines=" + orderLines +
+                ", userorderLines=" + userorderLines +
                 '}';
     }
 }

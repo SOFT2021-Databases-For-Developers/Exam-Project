@@ -51,7 +51,7 @@ public class UserController
     @PostMapping("/create")
     public User createOrder(@RequestBody User user) {
         try {
-            LOGGER.info("[LOGGER] ::: USER CONTROLLER ::: CREATED CUSTOMER ::: " + user);
+            LOGGER.info("[LOGGER] ::: USER CONTROLLER ::: CREATED USER ::: " + user);
             return repo.save(user);
         } catch (MongoException ex) {
             LOGGER.error("[LOGGER] ::: USER CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
