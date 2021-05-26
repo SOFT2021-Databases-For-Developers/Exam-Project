@@ -17,12 +17,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Go File" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="docker-desktop" />
+    <option name="namespace" value="default" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -41,6 +46,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -49,8 +55,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Microservice-Discovery-Application" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="app.mongo" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.MongoApplication">
     <configuration name="MongoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -62,6 +74,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -93,6 +116,10 @@
       <workItem from="1621611691347" duration="1443000" />
       <workItem from="1621767872901" duration="616000" />
       <workItem from="1621933592397" duration="608000" />
+      <workItem from="1622018871780" duration="21000" />
+      <workItem from="1622018910482" duration="2478000" />
+      <workItem from="1622021415792" duration="3463000" />
+      <workItem from="1622024908527" duration="1288000" />
     </task>
     <servers />
   </component>
@@ -103,47 +130,5 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="692" y="248" key="FileChooserDialogImpl" timestamp="1621611847938">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state x="692" y="248" key="FileChooserDialogImpl/0.0.1825.987@0.0.1825.987" timestamp="1621611847938" />
-    <state width="1781" height="264" key="GridCell.Tab.0.bottom" timestamp="1621616383133">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.0.bottom/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
-    <state width="1781" height="264" key="GridCell.Tab.0.center" timestamp="1621616383133">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.0.center/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
-    <state width="1781" height="264" key="GridCell.Tab.0.left" timestamp="1621616383129">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.0.left/0.0.1825.987@0.0.1825.987" timestamp="1621616383129" />
-    <state width="1781" height="264" key="GridCell.Tab.0.right" timestamp="1621616383133">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.0.right/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
-    <state width="1781" height="264" key="GridCell.Tab.1.bottom" timestamp="1621616383134">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.1.bottom/0.0.1825.987@0.0.1825.987" timestamp="1621616383134" />
-    <state width="1781" height="264" key="GridCell.Tab.1.center" timestamp="1621616383133">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.1.center/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
-    <state width="1781" height="264" key="GridCell.Tab.1.left" timestamp="1621616383133">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.1.left/0.0.1825.987@0.0.1825.987" timestamp="1621616383133" />
-    <state width="1781" height="264" key="GridCell.Tab.1.right" timestamp="1621616383134">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state width="1781" height="264" key="GridCell.Tab.1.right/0.0.1825.987@0.0.1825.987" timestamp="1621616383134" />
-    <state x="420" y="138" key="SettingsEditor" timestamp="1621611715654">
-      <screen x="0" y="0" width="1825" height="987" />
-    </state>
-    <state x="420" y="138" key="SettingsEditor/0.0.1825.987@0.0.1825.987" timestamp="1621611715654" />
   </component>
 </project>

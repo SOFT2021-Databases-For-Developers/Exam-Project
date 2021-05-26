@@ -1,25 +1,3 @@
 
-m
-=src/main/java/app/mongo/repositories/user/UserRepository.java,d\1\d1c1a2e231f47b27f8de1ebcd53303eaa20e7a77
-l
-<src/main/java/app/mongo/repositories/order/OrderService.java,4\f\4fdbb659e8a2748a3d620405347ee669f1fecf64
-p
-@src/main/java/app/mongo/repositories/order/OrderLineService.java,e\6\e60df3be8565b10159132d94d13624afcdd12811
-j
-:src/main/java/app/mongo/repositories/game/GameService.java,3\d\3db34d56228d0da9ece6231142a595bf5d8f1b8e
-r
-Bsrc/main/java/app/mongo/repositories/customer/CustomerService.java,6\5\65ee0ae78358f5b162feb497d79760d5ed429349
-]
--src/main/java/app/mongo/models/user/User.java,a\0\a04648ce84fcf89dd732f5f90621ddba9db5aafd
-e
-5src/main/java/app/mongo/models/customer/Customer.java,2\a\2af131cfa4a48d10234c91184c33270061206c69
-\
-,src/main/java/app/mongo/helpers/Encrypt.java,4\6\46994acc348be18b622eaeff8a42a3330e26f45f
-l
-<src/main/java/app/mongo/controllers/user/UserController.java,b\d\bd190573388c1b6037f0883cf3578a9b657ddcf2
-{
-Ksrc/main/java/app/mongo/controllers/customer/CustomerServiceController.java,9\3\93dd29080334bc1e2df46cf4545e3fa8c1b095f7
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-]
--src/main/java/app/mongo/MongoApplication.java,7\0\70ebd14682e742e482210906692627aa7e9cccf1

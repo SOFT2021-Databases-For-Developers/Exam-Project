@@ -1,17 +1,10 @@
 package app.mongo;
 
-import app.mongo.controllers.game.GameApiFetcher;
+
 import app.mongo.helpers.Encrypt;
-import app.mongo.models.customer.Customer;
-import app.mongo.models.game.Game;
-import app.mongo.models.order.Order;
-import app.mongo.models.order.OrderLine;
-import app.mongo.models.order.Status;
+
 import app.mongo.models.user.User;
-import app.mongo.repositories.customer.CustomerService;
-import app.mongo.repositories.game.GameService;
-import app.mongo.repositories.order.OrderLineService;
-import app.mongo.repositories.order.OrderService;
+
 import app.mongo.repositories.user.UserRepository;
 import io.github.kaiso.relmongo.config.EnableRelMongo;
 import org.springframework.beans.factory.annotation.Autowired;

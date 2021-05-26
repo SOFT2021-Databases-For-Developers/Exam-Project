@@ -1,9 +1,10 @@
-package app.mongo.controllers.game;
+package app.mongo.controllers.item;
 
-import app.mongo.controllers.customer.CustomerServiceController;
+
+
 import app.mongo.exceptions.NotFoundException;
-import app.mongo.models.game.Game;
-import app.mongo.repositories.game.GameService;
+import app.mongo.models.item.Item;
+import app.mongo.repositories.item.ItemService;
 import com.mongodb.MongoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,63 +20,63 @@ import java.util.Optional;
 //@RepositoryRestResource
 @ResponseBody
 @RestController
-@RequestMapping("/games")
-public class GameServiceController
+@RequestMapping("/items")
+public class ItemServiceController
 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GameServiceController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(app.mongo.controllers.item.ItemServiceController.class);
 
     @Autowired
-    private GameService repo;
+    private ItemService repo;
 
     @GetMapping("")
-    public List<Game> retrieveAll() {
+    public List<Item> retrieveAll() {
         return repo.findAll();
     }
 
     @GetMapping("/id/{id}")
-    public Optional<Game> retrieveProductById(@PathVariable String id) throws NotFoundException, MongoException {
-        Optional<Game> game;
+    public Optional<Item> retrieveProductById(@PathVariable String id) throws NotFoundException, MongoException {
+        Optional<Item> item;
         try {
-            game = repo.findById(id);
-            if(game.isPresent()) {
-                return game;
+            item = repo.findById(id);
+            if(item.isPresent()) {
+                return item;
             } else {
-                LOGGER.error("[LOGGER] ::: GAME CONTROLLER ::: Game Not found ::: id: " + id);
-                throw new NotFoundException("Game not found");
+                LOGGER.error("[LOGGER] ::: ITEM CONTROLLER ::: item Not found ::: id: " + id);
+                throw new NotFoundException("ITEM not found");
             }
         } catch (MongoException ex) {
-            LOGGER.error("[LOGGER] ::: GAME CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
+            LOGGER.error("[LOGGER] ::: ITEM CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
             throw new NotFoundException(ex.getCode() + " : " + ex.getMessage());
         }
     }
 
     @GetMapping("/title/{title}")
-    public Game retrieveProductByTitle(@PathVariable String title) throws NotFoundException, MongoException {
+    public Item retrieveProductByTitle(@PathVariable String title) throws NotFoundException, MongoException {
         try {
             return repo.findByTitle(title);
         } catch (MongoException ex) {
-            LOGGER.error("[LOGGER] ::: GAME CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
+            LOGGER.error("[LOGGER] ::: ITEM CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
             throw new NotFoundException(ex.getCode() + " : " + ex.getMessage());
         }
     }
 
     @PostMapping("/create")
-    public Game createProduct(@RequestBody Game game) {
+    public Item createProduct(@RequestBody Item item) {
         try {
-            return repo.save(game);
+            return repo.save(item);
         } catch (MongoException ex) {
-            LOGGER.error("[LOGGER] ::: GAME CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
+            LOGGER.error("[LOGGER] ::: ITEM CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
             throw new NotFoundException(ex.getCode() + " : " + ex.getMessage());
         }
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteGame(@PathVariable String id) {
+    public String deleteItem(@PathVariable String id) {
         try {
             repo.deleteById(id);
             return "Deleted record of " + id;
         } catch (MongoException ex) {
-            LOGGER.error("[LOGGER] ::: GAME CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
+            LOGGER.error("[LOGGER] ::: ITEM CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
             throw new NotFoundException(ex.getCode() + " : " + ex.getMessage());
         }
     }
