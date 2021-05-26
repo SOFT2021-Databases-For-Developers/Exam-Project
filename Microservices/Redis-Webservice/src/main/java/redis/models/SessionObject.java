@@ -1,10 +1,11 @@
-package redis.redismicroservices.dto;
+package redis.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SessionObject {
-    private String username;;
-    private List<String> shoppingCart;
+public class SessionObject implements Serializable {
+    private String username;
+        private List<String> shoppingCart;
 
     public SessionObject(String username, List<String> shoppingCart) {
         this.username = username;
