@@ -1,6 +1,9 @@
 package app.mongo.models.order;
 
-import app.mongo.models.game.Game;
+
+
+import app.mongo.models.item.Item;
+
 import io.github.kaiso.relmongo.annotation.CascadeType;
 import io.github.kaiso.relmongo.annotation.FetchType;
 import io.github.kaiso.relmongo.annotation.JoinProperty;
@@ -19,25 +22,19 @@ public class OrderLine {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     @OneToOne(fetch= FetchType.EAGER, cascade = CascadeType.NONE)
-    @JoinProperty(name = "games")
-    private Game game;
-    private int amount;
-    private Status status;
+    @JoinProperty(name = "item")
+    private Item item;
 
     public OrderLine() {
     }
 
-    public OrderLine(String id, Game game, int amount, Status status) {
+    public OrderLine(String id, Item item) {
         this.id = id;
-        this.game = game;
-        this.amount = amount;
-        this.status = status;
+        this.item = item;
     }
 
-    public OrderLine(Game game, int amount, Status status) {
-        this.game = game;
-        this.amount = amount;
-        this.status = status;
+    public OrderLine(Item item) {
+        this.item = item;
     }
 
     public String getId() {
@@ -48,37 +45,21 @@ public class OrderLine {
         this.id = id;
     }
 
-    public Game getGame() {
-        return game;
+    public Item getItem() {
+        return item;
     }
 
-    public void setGame(Game game) {
-        this.game = game;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
-    public int getAmount() {
-        return amount;
-    }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 
     @Override
     public String toString() {
         return "OrderLine{" +
                 "id='" + id + '\'' +
-                ", game=" + game +
-                ", amount=" + amount +
-                ", status=" + status +
+                ", item=" + item +
                 '}';
     }
 }
