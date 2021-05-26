@@ -1,4 +1,4 @@
-package app.mongo.models.userOrder;
+package app.mongo.models.order;
 
 
 
@@ -16,8 +16,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Data
-@Document(collection ="userorderlines")
-public class UserOrderLine {
+@Document(collection ="orderlines")
+public class OrderLine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
@@ -25,15 +25,15 @@ public class UserOrderLine {
     @JoinProperty(name = "item")
     private Item item;
 
-    public UserOrderLine() {
+    public OrderLine() {
     }
 
-    public UserOrderLine(String id, Item item) {
+    public OrderLine(String id, Item item) {
         this.id = id;
         this.item = item;
     }
 
-    public UserOrderLine(Item item) {
+    public OrderLine(Item item) {
         this.item = item;
     }
 
@@ -57,7 +57,7 @@ public class UserOrderLine {
 
     @Override
     public String toString() {
-        return "UserOrderLine{" +
+        return "OrderLine{" +
                 "id='" + id + '\'' +
                 ", item=" + item +
                 '}';

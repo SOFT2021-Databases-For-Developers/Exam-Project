@@ -23,12 +23,10 @@ public class Item implements Serializable{
 
     }
 
-    public Item(String id, String title, float price) {
-        this.id = id;
+    public Item(String title, float price) {
         this.title = title;
         this.price = price;
     }
-
 
     @Override
     public String toString() {

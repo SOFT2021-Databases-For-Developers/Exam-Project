@@ -1,8 +1,7 @@
-package app.mongo.models.userOrder;
+package app.mongo.models.order;
 
 
 import app.mongo.models.user.User;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.kaiso.relmongo.annotation.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -14,8 +13,8 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@Document(collection ="userorders")
-public class UserOrder {
+@Document(collection ="orders")
+public class OrderOrder {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private Date createdAt;
@@ -23,32 +22,33 @@ public class UserOrder {
     @JoinProperty(name = "users")
     private User user;
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinProperty(name = "userorderlines")
-    private List<UserOrderLine> userorderLines;
+    @JoinProperty(name = "orderlines")
+    private List<OrderLine> orderLines;
 
-    public UserOrder() {
+    public OrderOrder() {
     }
 
-    public UserOrder(String id, Date createdAt, User user, List<UserOrderLine> userorderLines) {
+    public OrderOrder(String id, Date createdAt, User user, List<OrderLine> orderLines) {
         this.id = id;
         this.createdAt = createdAt;
         this.user = user;
-        this.userorderLines = userorderLines;
+        this.orderLines = orderLines;
     }
 
-    public UserOrder(Date createdAt, User user, List<UserOrderLine> userorderLines) {
+    public OrderOrder( User user, List<OrderLine> orderLines) {
         this.createdAt = createdAt;
         this.user = user;
-        this.userorderLines = userorderLines;
+        this.orderLines = orderLines;
     }
+
 
     @Override
     public String toString() {
-        return "UserOrder{" +
+        return "Order{" +
                 "id='" + id + '\'' +
                 ", createdAt=" + createdAt +
                 ", user=" + user +
-                ", userorderLines=" + userorderLines +
+                ", orderLines=" + orderLines +
                 '}';
     }
 }
