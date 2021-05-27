@@ -1,5 +1,7 @@
 package app.postgresql.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,7 +11,9 @@ public class Model implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotNull
     private String name;
+    @NotNull
     private int year;
 
     @ManyToOne

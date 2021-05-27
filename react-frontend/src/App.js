@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MakeListOptions from './components/MakeSelect';
+import ReactPaginate from 'react-paginate';
+import useFetchGames from "./components/useFetchHooks";
+import SearchForm from './components/searchForm';
+import { Container, Spinner } from "react-bootstrap";
+import Game from "./components/Game";
+import Listing from './components/Listing'
+import Pagination from "./components/Pagination";
  
 function App() {
   const [listingList, setListingList] = useState([]);
@@ -18,14 +24,13 @@ function App() {
   const [modelLoading, setModelLoading] = useState(true);
 
   const [filterQuery, setFilterQuery] = useState();
-  
 
 
 
 
   async function fetchListings() {
-    const result = await axios('http://localhost:25001/listings');
-    setListingList(result.data)
+    const result = await axios('http://localhost:25001/listings?page=1&size=10');
+    setListingList(result.data.content)
   }
 
   async function fetchCategories() {
@@ -67,8 +72,26 @@ function App() {
 
 
 
-  const createQuery = () => { 
-  }
+
+
+
+  const [params, setParams] = useState({});
+  const [page, setPage] = useState(0);
+  const { games, loading, error, hasNextPage } = useFetchGames(params, page);
+
+  console.log(games);
+
+
+
+  const handleParamChange = (e) => {
+    const param = e.target.name;
+    const value = e.target.value;
+    setPage(0);
+    setParams((prevParams) => {
+      return { ...prevParams, [param]: value };
+    });
+  };
+
 
 
 
@@ -76,12 +99,20 @@ function App() {
     fetchListings();
     fetchMakes();
     fetchModels();
-    createQuery();
   }, []);
 
   return (
     <div className="container-fluid">
       <h2>Hello world!</h2>
+      <SearchForm params={params} onParamChange={handleParamChange} />
+      <Pagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
+      {loading && <Spinner animation="border" variant="primary" />}
+      {listingList.map((listing) => {
+        return <Listing key={listing.id} listing={listing} />;
+      })}
+      <Pagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
+
+
       <div id="selector-box">
         <div className="row">
           <div className="col-3">

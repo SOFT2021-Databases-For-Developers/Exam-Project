@@ -1,5 +1,7 @@
 package app.postgresql.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,6 +13,7 @@ public class Make implements Serializable {
     private int id;
 
     @Column(unique = true)
+    @NotNull
     private String name;
 
     public Make() {
