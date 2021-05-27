@@ -49,8 +49,6 @@ services:
     ports:
       - "7474:7474"
       - "7687:7687"
-    volumes:
-      - ./neo4j/plugins:/plugins
     environment:
       NEO4J_AUTH: neo4j/admin
       NEO4J_dbms_logs_debug_level: DEBUG
