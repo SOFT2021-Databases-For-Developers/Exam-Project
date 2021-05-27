@@ -1,4 +1,5 @@
 package neo4j.neo4jwebservice.entities;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
@@ -12,38 +13,31 @@ import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 
 @Node
-public class Person {
+public class Listing {
 
     @Id @GeneratedValue private Long id;
 
-    private String name;
+    private long listingId;
 
-    private Person() {
-        // Empty constructor required as of Neo4j API 2.0.5
-    };
+    private String make;
 
-    public Person(String name) {
-        this.name = name;
+    public Listing() {
     }
 
-    public String getName() {
-        return name;
+    public long getListingId() {
+        return listingId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getMake() {
+        return make;
     }
 
-    @Relationship(type = "SEEN")
-    public Set<Listing> seen;
+    public void setListingId(long listingId) {
+        this.listingId = listingId;
+    }
 
-    public void addSeenListing(Listing l)
-    {
-        if(seen == null)
-        {
-            seen = new HashSet<>();
-        }
-        seen.add(l);
+    public void setMake(String make) {
+        this.make = make;
     }
 
     public Long getId() {
