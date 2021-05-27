@@ -1,5 +1,6 @@
 package app.postgresql.controllers;
 
+import app.postgresql.helpers.Generator;
 import app.postgresql.models.Listing;
 import app.postgresql.repositories.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("listings")
@@ -23,15 +26,11 @@ public class ListingController {
 
     @Autowired
     private ListingRepository listingRepository;
-    private ApplicationEventPublisher applicationEventPublisher;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping("/all")
     @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<Listing>> getListings() {
         Collection<Listing> l = listingRepository.findAll();
-        for (Listing x : l) {
-            System.out.println(x);
-        }
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
@@ -50,17 +49,57 @@ public class ListingController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "*")
-    public ResponseEntity<Listing> getPerson(@PathVariable int id) {
-        try {
-            Listing l = listingRepository.findOneByid(id);
+    public ResponseEntity<Listing> getListing(@PathVariable int id) {
+        Listing l = listingRepository.findOneByid(id);
+        if (l != null) {
+            return new ResponseEntity<>(l, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
 
-            if (l != null) {
-                return new ResponseEntity<>(l, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception ex) {
-            throw ex;
+    @PostMapping("")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<Listing> createListing(@RequestBody Listing listing) {
+        try {
+            Listing _listing = new Listing();
+            _listing.setSeller_id(listing.getSeller_id());
+            _listing.setCar(listing.getCar());
+            _listing.setPrice(listing.getPrice());
+            _listing.setCreated_on(new Date());
+            _listing.setKm(listing.getKm());
+            _listing.setDescription(listing.getDescription());
+            _listing.setTitle(listing.getTitle());
+            return new ResponseEntity<>(listingRepository.save(_listing), HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/{id}")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<Listing> updateListing(@PathVariable("id") int id, @RequestBody Listing listing) {
+        Optional<Listing> listingOptional = listingRepository.findById(id);
+        if (listingOptional.isPresent()) {
+            Listing _listing = listingOptional.get();
+            _listing.setPrice(listing.getPrice());
+            _listing.setKm(listing.getKm());
+            _listing.setDescription(listing.getDescription());
+            _listing.setTitle(listing.getTitle());
+            return new ResponseEntity<>(listingRepository.save(_listing), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<HttpStatus> deleteListing(@PathVariable("id") int id) {
+        try {
+            listingRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

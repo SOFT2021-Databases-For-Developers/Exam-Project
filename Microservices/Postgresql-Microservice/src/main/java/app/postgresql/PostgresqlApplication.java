@@ -54,35 +54,24 @@ public class PostgresqlApplication implements CommandLineRunner {
         //PopulateDB(true, 10, true);
         //listingRepo.saveAll(GenerateFakeListings(true, 1000));
 
-        //listingRepository.deleteAll();
-        //carRepository.deleteAll();
-        //modelRepository.deleteAll();
-        //makeRepository.deleteAll();
-        //makeRepository.saveAll(JsonReader.getMakesFromJson());
-        //modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
-        //carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
-        //listingRepository.saveAll(GenerateFakeListings(true, 10000));
+        //Pageable firstPageWithTwoElements = PageRequest.of(0, 100);
+        //Pageable sortByDate = PageRequest.of(0, 10, Sort.by("price").descending());
+        //Page<Listing> allListings = listingRepository.findAll(sortByDate);
 
+        System.out.println("Hol' up, preparing the database...");
 
-
-        Pageable firstPageWithTwoElements = PageRequest.of(0, 100);
-        Pageable sortByDate = PageRequest.of(0, 10, Sort.by("price").descending());
-        Page<Listing> allListings = listingRepository.findAll(sortByDate);
-
-
-        for (Listing l : allListings) {
-            System.out.println(l.getId() + ", " + l.getPrice());
-        }
-
-
-
-
-        //listingNewRepository.save(new ListingNew("adskask13123Jjasd", "a car","a car im sellin",6969,99,c, new Date()));
-
-
+        listingRepository.deleteAll();
+        carRepository.deleteAll();
+        modelRepository.deleteAll();
+        makeRepository.deleteAll();
+        makeRepository.saveAll(JsonReader.getMakesFromJson());
+        modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
+        carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
+        listingRepository.saveAll(GenerateFakeListings(true, 100));
 
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        System.out.println("Alright we good!");
         System.out.println("Duration: " + duration/1000 + " seconds.");
 
     }
