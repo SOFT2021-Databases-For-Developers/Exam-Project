@@ -1,14 +1,12 @@
-package app.models.customer;
+package app.models.mongo;
 
-import app.helpers.Encrypt;
 import lombok.Data;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
 @Data
-public class Customer implements Serializable {
+public class User implements Serializable {
     @Id
     private String id;
     private String firstName;
@@ -16,17 +14,17 @@ public class Customer implements Serializable {
     private String mail;
     private String password;
 
-    public Customer() {
+    public User() {
     }
 
-    public Customer(String firstName, String lastName, String mail, String password) {
+    public User(String firstName, String lastName, String mail, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
         this.password = password;
     }
 
-    public Customer(String id, String firstName, String lastName, String mail, String password) {
+    public User(String id, String firstName, String lastName, String mail, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

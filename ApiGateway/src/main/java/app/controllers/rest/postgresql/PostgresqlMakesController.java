@@ -1,4 +1,4 @@
-package app.controllers.rest;
+package app.controllers.rest.postgresql;
 
 import app.models.postgresql.Make;
 import app.repositories.PostgresqlService;

@@ -15,7 +15,6 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private String username;
     private String firstName;
     private String lastName;
     private String mail;
@@ -24,17 +23,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String firstName, String lastName, String mail, String password) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mail = mail;
-        this.password = password;
-    }
-
-    public User(String id, String username, String firstName, String lastName, String mail, String password) {
-        this.id = id;
-        this.username = username;
+    public User(String firstName, String lastName, String mail, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
@@ -45,12 +34,8 @@ public class User implements Serializable {
         return id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -89,7 +74,6 @@ public class User implements Serializable {
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", mail='" + mail + '\'' +

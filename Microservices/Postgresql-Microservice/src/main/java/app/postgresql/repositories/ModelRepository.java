@@ -1,7 +1,6 @@
 package app.postgresql.repositories;
 
 import app.postgresql.models.Model;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

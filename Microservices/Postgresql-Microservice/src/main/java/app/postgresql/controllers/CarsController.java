@@ -1,7 +1,6 @@
 package app.postgresql.controllers;
 
 import app.postgresql.models.Car;
-import app.postgresql.models.Listing;
 import app.postgresql.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.Optional;
 
 @RestController

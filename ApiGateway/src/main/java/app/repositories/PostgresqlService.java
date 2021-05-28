@@ -1,21 +1,24 @@
 package app.repositories;
 
+import app.config.RibbonConfig;
 import app.models.SimplePageImpl;
 import app.models.postgresql.Car;
 import app.models.postgresql.Listing;
 import app.models.postgresql.Make;
 import app.models.postgresql.Model;
 import app.repositories.setup.FeignConfig;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-
+@CrossOrigin
 @FeignClient(
         value = "postgresql-service",
         configuration = { FeignConfig.class })
+@RibbonClient(name = "postgresql-service", configuration = RibbonConfig.class)
 public interface PostgresqlService {
 
     /* MAKES */
@@ -69,6 +72,9 @@ public interface PostgresqlService {
     Collection<Listing> getListingsUnPaginated();
     @GetMapping("/listings/{id}")
     Listing getListingsById(@PathVariable int id);
+    @GetMapping("/listings/seller/{seller}")
+    Collection<Listing> getListingsBySeller(@PathVariable String seller);
+
     @PutMapping("/listings/{id}")
     Listing updateListing(@PathVariable int id, @RequestBody Listing listing);
     @PostMapping("/listings")

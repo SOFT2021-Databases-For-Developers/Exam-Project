@@ -1,12 +1,9 @@
 package app.postgresql.controllers;
 
-import app.postgresql.models.Listing;
-import app.postgresql.models.Make;
 import app.postgresql.models.Model;
 import app.postgresql.repositories.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

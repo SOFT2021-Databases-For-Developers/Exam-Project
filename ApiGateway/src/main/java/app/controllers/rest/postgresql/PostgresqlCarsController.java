@@ -1,4 +1,4 @@
-package app.controllers.rest;
+package app.controllers.rest.postgresql;
 
 import app.models.postgresql.Car;
 import app.models.postgresql.Make;

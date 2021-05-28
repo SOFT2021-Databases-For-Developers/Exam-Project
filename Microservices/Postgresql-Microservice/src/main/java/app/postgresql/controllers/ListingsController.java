@@ -1,24 +1,16 @@
 package app.postgresql.controllers;
 
-import app.postgresql.helpers.Generator;
 import app.postgresql.models.Listing;
-import app.postgresql.models.Make;
 import app.postgresql.repositories.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -47,7 +39,18 @@ public class ListingsController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @CrossOrigin(origins = "*")
     public ResponseEntity<Listing> getListing(@PathVariable int id) {
-        Listing l = listingRepository.findOneByid(id);
+        Listing l = listingRepository.findOneById(id);
+        if (l != null) {
+            return new ResponseEntity<>(l, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = "/seller/{seller}", method = RequestMethod.GET)
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<Collection<Listing>> getListingsForSeller(@PathVariable String seller) {
+        Collection<Listing> l = listingRepository.findBySeller(seller);
         if (l != null) {
             return new ResponseEntity<>(l, HttpStatus.OK);
         } else {
@@ -60,7 +63,7 @@ public class ListingsController {
     public ResponseEntity<Listing> createListing(@RequestBody Listing listing) {
         try {
             Listing _listing = new Listing();
-            _listing.setSeller_id(listing.getSeller_id());
+            _listing.setSeller(listing.getSeller());
             _listing.setCar(listing.getCar());
             _listing.setPrice(listing.getPrice());
             _listing.setCreated_on(new Date());

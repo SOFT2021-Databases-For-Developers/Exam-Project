@@ -8,7 +8,7 @@ import java.util.Date;
 public class Listing implements Serializable {
     @Id
     private int id;
-    private String seller_id;
+    private String seller;
     private String title;
     private String description;
     private float price;
@@ -19,8 +19,8 @@ public class Listing implements Serializable {
     public Listing() {
     }
 
-    public Listing(String seller_id, String title, String description, float price, int km, Car car, Date created_on) {
-        this.seller_id = seller_id;
+    public Listing(String seller, String title, String description, float price, int km, Car car, Date created_on) {
+        this.seller = seller;
         this.title = title;
         this.description = description;
         this.price = price;
@@ -37,12 +37,12 @@ public class Listing implements Serializable {
         this.id = id;
     }
 
-    public String getSeller_id() {
-        return seller_id;
+    public String getSeller() {
+        return seller;
     }
 
-    public void setSeller_id(String seller_id) {
-        this.seller_id = seller_id;
+    public void setSeller(String seller) {
+        this.seller = seller;
     }
 
     public String getTitle() {
@@ -97,7 +97,7 @@ public class Listing implements Serializable {
     public String toString() {
         return "Listing{" +
                 "id=" + id +
-                ", seller_id='" + seller_id + '\'' +
+                ", seller_id='" + seller + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

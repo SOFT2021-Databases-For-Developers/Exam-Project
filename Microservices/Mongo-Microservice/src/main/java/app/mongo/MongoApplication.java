@@ -51,9 +51,9 @@ public class MongoApplication implements CommandLineRunner {
 
 
 
-        User c1 = new User("Thomas","Thomas","hey","thomas@hey.dk",Encrypt.hashPassword("root1234"));
-        User c2 = new User("Jonas","Jonas","hey","Jonas@hey.dk",Encrypt.hashPassword("root1234"));
-        User c3 = new User("Jonatan","Jonatan","hey","Jonatan@hey.dk",Encrypt.hashPassword("root1234"));
+        User c1 = new User("Thomas","Ebsen","thomas@hey.dk",Encrypt.hashPassword("root1234"));
+        User c2 = new User("Jonas","Hein","Jonas@hey.dk",Encrypt.hashPassword("root1234"));
+        User c3 = new User("Jonatan","Bakke","Jonatan@hey.dk",Encrypt.hashPassword("root1234"));
         userRepo.save(c1);
         userRepo.save(c2);
         userRepo.save(c3);

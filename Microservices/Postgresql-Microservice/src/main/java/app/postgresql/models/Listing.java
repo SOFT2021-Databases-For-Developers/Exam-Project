@@ -12,8 +12,8 @@ public class Listing implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "seller_id")
-    private String seller_id;
+    @Column(name = "seller")
+    private String seller;
     @Column(name = "title")
     private String title;
     @Column(name = "description")
@@ -33,8 +33,8 @@ public class Listing implements Serializable {
     public Listing() {
     }
 
-    public Listing(String seller_id, String title, String description, float price, int km, Car car, Date created_on) {
-        this.seller_id = seller_id;
+    public Listing(String seller, String title, String description, float price, int km, Car car, Date created_on) {
+        this.seller = seller;
         this.title = title;
         this.description = description;
         this.price = price;
@@ -51,12 +51,12 @@ public class Listing implements Serializable {
         this.id = id;
     }
 
-    public String getSeller_id() {
-        return seller_id;
+    public String getSeller() {
+        return seller;
     }
 
-    public void setSeller_id(String seller_id) {
-        this.seller_id = seller_id;
+    public void setSeller(String seller_id) {
+        this.seller = seller_id;
     }
 
     public String getTitle() {
@@ -111,7 +111,7 @@ public class Listing implements Serializable {
     public String toString() {
         return "ListingNew{" +
                 "id=" + id +
-                ", seller_id='" + seller_id + '\'' +
+                ", seller_id='" + seller + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

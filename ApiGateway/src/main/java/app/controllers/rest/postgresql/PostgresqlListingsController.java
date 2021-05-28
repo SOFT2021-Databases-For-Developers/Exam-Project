@@ -1,6 +1,8 @@
-package app.controllers.rest;
+package app.controllers.rest.postgresql;
 
+import app.models.mongo.User;
 import app.models.postgresql.Listing;
+import app.repositories.MongoService;
 import app.repositories.PostgresqlService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,15 +12,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("listings")
 public class PostgresqlListingsController {
-    private PostgresqlService postgresqlService;
+    private final PostgresqlService postgresqlService;
+    private final MongoService mongoService;
 
-    public PostgresqlListingsController(PostgresqlService postgresqlService) {
+    public PostgresqlListingsController(PostgresqlService postgresqlService, MongoService mongoService) {
         this.postgresqlService = postgresqlService;
+        this.mongoService = mongoService;
     }
 
     @GetMapping("")
@@ -51,15 +54,18 @@ public class PostgresqlListingsController {
     @PostMapping("")
     @CrossOrigin(origins = "*")
     public ResponseEntity<Listing> createListing(@RequestBody Listing listing) {
+        User _user = mongoService.getUserById(listing.getSeller());
+        System.out.println("TEST::::::: " + _user);
         try {
             Listing _listing = new Listing();
-            _listing.setSeller_id(listing.getSeller_id());
+            _listing.setSeller(_user.getId());
             _listing.setCar(listing.getCar());
             _listing.setPrice(listing.getPrice());
             _listing.setCreated_on(new Date());
             _listing.setKm(listing.getKm());
             _listing.setDescription(listing.getDescription());
             _listing.setTitle(listing.getTitle());
+            System.out.println("TEST:::::::: " + listing);
             return new ResponseEntity<>(postgresqlService.saveListing(_listing), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
