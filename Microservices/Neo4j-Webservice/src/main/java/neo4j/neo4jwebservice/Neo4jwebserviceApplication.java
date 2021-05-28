@@ -1,8 +1,10 @@
 package neo4j.neo4jwebservice;
 
 import neo4j.neo4jwebservice.entities.Listing;
+import neo4j.neo4jwebservice.entities.Make;
 import neo4j.neo4jwebservice.entities.Person;
 import neo4j.neo4jwebservice.repository.ListingRepository;
+import neo4j.neo4jwebservice.repository.MakeRepository;
 import neo4j.neo4jwebservice.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,21 +28,39 @@ public class Neo4jwebserviceApplication {
     }
 
     @Bean
-    CommandLineRunner demo(PersonRepository personRepository, ListingRepository listingRepository) {
+    CommandLineRunner demo(PersonRepository personRepository, ListingRepository listingRepository, MakeRepository makeRepository) {
         return args -> {
 
             personRepository.deleteAll();
             listingRepository.deleteAll();
+            makeRepository.deleteAll();
 
             Person jonatan = new Person("Jonatan");
             personRepository.save(jonatan);
             jonatan = personRepository.findByName(jonatan.getName());
-            Listing l = new Listing();
-            l.setMake("SUV");
-            jonatan.addSeenListing(l);
+            Make m = new Make("BMW");
+            jonatan.addLike(m);
+            personRepository.save(jonatan);
+            jonatan = personRepository.findByName(jonatan.getName());
+            Listing l = new Listing(333);
+            for(Make make : jonatan.likes)
+            {
+                make.addSeenListing(l);
+            }
             personRepository.save(jonatan);
 
 
+            jonatan = personRepository.findByName(jonatan.getName());
+            m = new Make("AUDI");
+            jonatan.addLike(m);
+            personRepository.save(jonatan);
+            jonatan = personRepository.findByName(jonatan.getName());
+            for(Make make : jonatan.likes)
+            {
+                make.addSeenListing(new Listing(1));
+                make.addSeenListing(new Listing(2));
+            }
+            personRepository.save(jonatan);
         };
     }
 }

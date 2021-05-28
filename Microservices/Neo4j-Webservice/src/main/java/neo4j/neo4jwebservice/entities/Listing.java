@@ -19,8 +19,6 @@ public class Listing {
 
     private long listingId;
 
-    private String make;
-
     public Listing() {
     }
 
@@ -28,23 +26,18 @@ public class Listing {
         return listingId;
     }
 
-    public String getMake() {
-        return make;
-    }
-
     public void setListingId(long listingId) {
         this.listingId = listingId;
     }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Listing(long listingId) {
+        this.listingId = listingId;
     }
 }
