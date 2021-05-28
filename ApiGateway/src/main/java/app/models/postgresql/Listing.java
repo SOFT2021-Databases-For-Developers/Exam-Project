@@ -14,17 +14,19 @@ public class Listing implements Serializable {
     private float price;
     private int km;
     private Car car;
+    private Status status;
     private Date created_on;
 
     public Listing() {
     }
 
-    public Listing(String seller, String title, String description, float price, int km, Car car, Date created_on) {
+    public Listing(String seller, String title, String description, float price, int km, Car car, Status status, Date created_on) {
         this.seller = seller;
         this.title = title;
         this.description = description;
         this.price = price;
         this.km = km;
+        this.status = status;
         this.car = car;
         this.created_on = created_on;
     }
@@ -85,6 +87,14 @@ public class Listing implements Serializable {
         this.car = car;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public Date getCreated_on() {
         return created_on;
     }
@@ -97,12 +107,13 @@ public class Listing implements Serializable {
     public String toString() {
         return "Listing{" +
                 "id=" + id +
-                ", seller_id='" + seller + '\'' +
+                ", seller='" + seller + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", km=" + km +
                 ", car=" + car +
+                ", status=" + status +
                 ", created_on=" + created_on +
                 '}';
     }

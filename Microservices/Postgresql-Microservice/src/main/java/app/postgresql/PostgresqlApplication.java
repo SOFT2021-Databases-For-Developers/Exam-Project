@@ -1,9 +1,9 @@
 package app.postgresql;
 
 import app.postgresql.helpers.Generator;
-import app.postgresql.helpers.JsonReader;
 import app.postgresql.models.Car;
 import app.postgresql.models.Listing;
+import app.postgresql.models.Status;
 import app.postgresql.repositories.CarRepository;
 import app.postgresql.repositories.ListingRepository;
 import app.postgresql.repositories.MakeRepository;
@@ -58,9 +58,9 @@ public class PostgresqlApplication implements CommandLineRunner {
         //carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
         listingRepository.saveAll(GenerateFakeListings(true, 100));
         Car c = carRepository.findById(1184269).get();
-        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,c,new Date());
-        Listing l12 = new Listing("60b0dd2038366f397d145041","Car 2","A car 2",555,691,c,new Date());
-        Listing l13 = new Listing("60b0dd2038366f397d145041","Car 3","A car 3",444,696,c,new Date());
+        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,Status.ACTIVE, c,new Date());
+        Listing l12 = new Listing("60b0dd2038366f397d145041","Car 2","A car 2",555,691, Status.ACTIVE, c,new Date());
+        Listing l13 = new Listing("60b0dd2038366f397d145041","Car 3","A car 3",444,696, Status.ACTIVE, c, new Date());
 
         listingRepository.save(l11);
         listingRepository.save(l12);

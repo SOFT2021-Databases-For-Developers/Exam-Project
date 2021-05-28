@@ -22,6 +22,8 @@ public class Listing implements Serializable {
     private float price;
     @Column(name = "km")
     private int km;
+    @Column(name = "status")
+    private Status status;
 
     @ManyToOne
     @JoinColumn (name="car_id")
@@ -33,12 +35,13 @@ public class Listing implements Serializable {
     public Listing() {
     }
 
-    public Listing(String seller, String title, String description, float price, int km, Car car, Date created_on) {
+    public Listing(String seller, String title, String description, float price, int km, Status status, Car car, Date created_on) {
         this.seller = seller;
         this.title = title;
         this.description = description;
         this.price = price;
         this.km = km;
+        this.status = status;
         this.car = car;
         this.created_on = created_on;
     }
@@ -55,8 +58,8 @@ public class Listing implements Serializable {
         return seller;
     }
 
-    public void setSeller(String seller_id) {
-        this.seller = seller_id;
+    public void setSeller(String seller) {
+        this.seller = seller;
     }
 
     public String getTitle() {
@@ -91,6 +94,14 @@ public class Listing implements Serializable {
         this.km = km;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public Car getCar() {
         return car;
     }
@@ -109,13 +120,14 @@ public class Listing implements Serializable {
 
     @Override
     public String toString() {
-        return "ListingNew{" +
+        return "Listing{" +
                 "id=" + id +
-                ", seller_id='" + seller + '\'' +
+                ", seller='" + seller + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", km=" + km +
+                ", status=" + status +
                 ", car=" + car +
                 ", created_on=" + created_on +
                 '}';
