@@ -1,6 +1,10 @@
 package neo4j.neo4jwebservice;
 
+import neo4j.neo4jwebservice.entities.Listing;
+import neo4j.neo4jwebservice.entities.Make;
 import neo4j.neo4jwebservice.entities.Person;
+import neo4j.neo4jwebservice.repository.ListingRepository;
+import neo4j.neo4jwebservice.repository.MakeRepository;
 import neo4j.neo4jwebservice.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,44 +28,39 @@ public class Neo4jwebserviceApplication {
     }
 
     @Bean
-    CommandLineRunner demo(PersonRepository personRepository) {
+    CommandLineRunner demo(PersonRepository personRepository, ListingRepository listingRepository, MakeRepository makeRepository) {
         return args -> {
 
             personRepository.deleteAll();
+            listingRepository.deleteAll();
+            makeRepository.deleteAll();
 
-            Person greg = new Person("Greg");
-            Person roy = new Person("Roy");
-            Person craig = new Person("Craig");
+            Person jonatan = new Person("Jonatan");
+            personRepository.save(jonatan);
+            jonatan = personRepository.findByName(jonatan.getName());
+            Make m = new Make("BMW");
+            jonatan.addLike(m);
+            personRepository.save(jonatan);
+            jonatan = personRepository.findByName(jonatan.getName());
+            Listing l = new Listing(333);
+            for(Make make : jonatan.likes)
+            {
+                make.addSeenListing(l);
+            }
+            personRepository.save(jonatan);
 
-            List<Person> team = Arrays.asList(greg, roy, craig);
 
-            log.info("Before linking up with Neo4j...");
-
-            team.stream().forEach(person -> log.info("\t" + person.toString()));
-
-            personRepository.save(greg);
-            personRepository.save(roy);
-            personRepository.save(craig);
-
-            greg = personRepository.findByName(greg.getName());
-            greg.worksWith(roy);
-            greg.worksWith(craig);
-            personRepository.save(greg);
-
-            roy = personRepository.findByName(roy.getName());
-            roy.worksWith(craig);
-            // We already know that roy works with greg
-            personRepository.save(roy);
-
-            // We already know craig works with roy and greg
-
-            log.info("Lookup each person by name...");
-            team.stream().forEach(person -> log.info(
-                    "\t" + personRepository.findByName(person.getName()).toString()));
-
-            List<Person> teammates = personRepository.findByTeammatesName(greg.getName());
-            log.info("The following have Greg as a teammate...");
-            teammates.stream().forEach(person -> log.info("\t" + person.getName()));
+            jonatan = personRepository.findByName(jonatan.getName());
+            m = new Make("AUDI");
+            jonatan.addLike(m);
+            personRepository.save(jonatan);
+            jonatan = personRepository.findByName(jonatan.getName());
+            for(Make make : jonatan.likes)
+            {
+                make.addSeenListing(new Listing(1));
+                make.addSeenListing(new Listing(2));
+            }
+            personRepository.save(jonatan);
         };
     }
 }
