@@ -1,4 +1,4 @@
-package app.mongo.controllers.order.OrderServiceController;
+package app.mongo.controllers.order;
 import app.mongo.controllers.user.UserController;
 import app.mongo.exceptions.NotFoundException;
 import app.mongo.models.order.OrderOrder;

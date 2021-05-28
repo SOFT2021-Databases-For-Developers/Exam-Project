@@ -1,33 +1,22 @@
 package app.postgresql;
 
 import app.postgresql.helpers.Generator;
-import app.postgresql.helpers.JsonReader;
 import app.postgresql.models.Car;
 import app.postgresql.models.Listing;
-import app.postgresql.models.Make;
-import app.postgresql.models.Model;
+import app.postgresql.models.Status;
 import app.postgresql.repositories.CarRepository;
 import app.postgresql.repositories.ListingRepository;
 import app.postgresql.repositories.MakeRepository;
 import app.postgresql.repositories.ModelRepository;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class PostgresqlApplication implements CommandLineRunner {
 
@@ -61,18 +50,29 @@ public class PostgresqlApplication implements CommandLineRunner {
         System.out.println("Hol' up, preparing the database...");
 
         listingRepository.deleteAll();
-        carRepository.deleteAll();
-        modelRepository.deleteAll();
-        makeRepository.deleteAll();
-        makeRepository.saveAll(JsonReader.getMakesFromJson());
-        modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
-        carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
+        //carRepository.deleteAll();
+        //modelRepository.deleteAll();
+        //makeRepository.deleteAll();
+        //makeRepository.saveAll(JsonReader.getMakesFromJson());
+        //modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
+        //carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
         listingRepository.saveAll(GenerateFakeListings(true, 100));
+        Car c = carRepository.findById(1184269).get();
+        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,Status.ACTIVE, c,new Date());
+        Listing l12 = new Listing("60b0dd2038366f397d145041","Car 2","A car 2",555,691, Status.ACTIVE, c,new Date());
+        Listing l13 = new Listing("60b0dd2038366f397d145041","Car 3","A car 3",444,696, Status.ACTIVE, c, new Date());
+
+        listingRepository.save(l11);
+        listingRepository.save(l12);
+        listingRepository.save(l13);
 
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
         System.out.println("Alright we good!");
         System.out.println("Duration: " + duration/1000 + " seconds.");
+        for (Listing l : listingRepository.findBySeller("60b0dd2038366f397d145041")) {
+            System.out.println(l);
+        }
 
     }
 
@@ -87,7 +87,7 @@ public class PostgresqlApplication implements CommandLineRunner {
                 Car c = cars.get(rndIndex);
 
                 Listing l = new Listing();
-                l.setSeller_id(Generator.GenerateRandomAlphanumericString(24));
+                l.setSeller(Generator.GenerateRandomAlphanumericString(24));
                 l.setCar(c);
                 l.setPrice(random.nextFloat() * (100 + 100000));
                 l.setCreated_on(new Date());

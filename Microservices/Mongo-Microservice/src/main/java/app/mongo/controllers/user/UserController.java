@@ -3,6 +3,7 @@ package app.mongo.controllers.user;
 
 import app.mongo.exceptions.NotFoundException;
 
+import app.mongo.helpers.Encrypt;
 import app.mongo.models.user.User;
 import app.mongo.repositories.user.UserRepository;
 import com.mongodb.MongoException;
@@ -48,11 +49,13 @@ public class UserController
         }
     }
 
-    @PostMapping("/create")
-    public User createOrder(@RequestBody User user) {
+    @PostMapping("")
+    public User createUser(@RequestBody User user) {
         try {
             LOGGER.info("[LOGGER] ::: USER CONTROLLER ::: CREATED USER ::: " + user);
-            return repo.save(user);
+            User _user = user;
+            _user.setPassword(Encrypt.hashPassword(user.getPassword()));
+            return repo.save(_user);
         } catch (MongoException ex) {
             LOGGER.error("[LOGGER] ::: USER CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
 
