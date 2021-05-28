@@ -2,9 +2,12 @@ package app.postgresql.repositories;
 
 import app.postgresql.models.Car;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.Collection;
 
-public interface CarRepository extends CrudRepository<Car, Integer> {
+@RepositoryRestResource
+public interface CarRepository extends PagingAndSortingRepository<Car, Integer> {
     Collection<Car> findAll();
 }

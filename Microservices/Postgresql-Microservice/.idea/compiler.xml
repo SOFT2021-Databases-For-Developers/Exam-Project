@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Postgresql-Microservice" target="11" />
+      <module name="Postgresql-Microservice" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

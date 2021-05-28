@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>dk.dd</groupId>
-    <artifactId>car-catalog</artifactId>
+    <artifactId>mongo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>car-catalog</name>
+    <name>mongo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,7 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class PostgresqlApplication implements CommandLineRunner {
 
@@ -60,14 +62,14 @@ public class PostgresqlApplication implements CommandLineRunner {
 
         System.out.println("Hol' up, preparing the database...");
 
-        listingRepository.deleteAll();
-        carRepository.deleteAll();
-        modelRepository.deleteAll();
-        makeRepository.deleteAll();
-        makeRepository.saveAll(JsonReader.getMakesFromJson());
-        modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
-        carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
-        listingRepository.saveAll(GenerateFakeListings(true, 100));
+//        listingRepository.deleteAll();
+//        carRepository.deleteAll();
+//        modelRepository.deleteAll();
+//        makeRepository.deleteAll();
+//        makeRepository.saveAll(JsonReader.getMakesFromJson());
+//        modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
+//        carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
+//        listingRepository.saveAll(GenerateFakeListings(true, 100));
 
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
