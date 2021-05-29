@@ -1,9 +1,6 @@
 package neo4j.neo4jwebservice.entities;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.springframework.data.neo4j.core.schema.Id;

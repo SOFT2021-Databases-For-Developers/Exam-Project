@@ -52,4 +52,13 @@ public class Make {
     public Make(String make) {
         this.make = make;
     }
+
+    @Override
+    public String toString() {
+        return "Make{" +
+                "id=" + id +
+                ", make='" + make + '\'' +
+                ", listings=" + listings +
+                '}';
+    }
 }

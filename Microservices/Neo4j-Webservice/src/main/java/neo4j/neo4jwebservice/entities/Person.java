@@ -53,4 +53,13 @@ public class Person {
         }
         likes.add(m);
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", likes=" + likes +
+                '}';
+    }
 }

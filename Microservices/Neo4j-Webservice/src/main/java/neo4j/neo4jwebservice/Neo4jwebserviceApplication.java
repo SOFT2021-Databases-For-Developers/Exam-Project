@@ -61,6 +61,8 @@ public class Neo4jwebserviceApplication {
                 make.addSeenListing(new Listing(2));
             }
             personRepository.save(jonatan);
+
+
         };
     }
 }
