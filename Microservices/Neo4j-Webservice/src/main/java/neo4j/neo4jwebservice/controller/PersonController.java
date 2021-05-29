@@ -1,13 +1,18 @@
 package neo4j.neo4jwebservice.controller;
 
+import neo4j.neo4jwebservice.Querys.Neo4jQuerys;
 import neo4j.neo4jwebservice.dto.PostListing;
 import neo4j.neo4jwebservice.dto.Recommendation;
+import neo4j.neo4jwebservice.dto.RecommendationPost;
 import neo4j.neo4jwebservice.entities.Listing;
 import neo4j.neo4jwebservice.entities.Make;
 import neo4j.neo4jwebservice.entities.Person;
+import neo4j.neo4jwebservice.entitiesold.PersonOld;
 import neo4j.neo4jwebservice.repository.ListingRepository;
 import neo4j.neo4jwebservice.repository.MakeRepository;
 import neo4j.neo4jwebservice.repository.PersonRepository;
+import neo4j.neo4jwebservice.repositoryold.GenericImpl;
+import neo4j.neo4jwebservice.repositoryold.PersonOldImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,21 +20,42 @@ import java.util.List;
 
 @RestController
 public class PersonController {
+    /*
     private PersonRepository personRepository;
     private MakeRepository makeRepository;
     private ListingRepository listingRepository;
+    private PersonOldImpl oldGeneric;
 
+     */
+    private Neo4jQuerys neo4jQuerys;
+
+    /*
     public PersonController(PersonRepository personRepository, MakeRepository makeRepository, ListingRepository listingRepository) {
         this.personRepository = personRepository;
         this.makeRepository = makeRepository;
         this.listingRepository = listingRepository;
+        oldGeneric = new PersonOldImpl();
+        neo4jQuerys = new Neo4jQuerys();
+    }
+     */
+
+    public PersonController() {
+        this.neo4jQuerys = new Neo4jQuerys();
     }
 
-    @GetMapping("/test")
-    public Person test()
+    @GetMapping("/{username}")
+    public List<Recommendation> getRecommendations(@PathVariable String username)
     {
-        return new Person("Jonatan");
+        return neo4jQuerys.getRecommendationsForPerson(username);
     }
+
+    @PostMapping()
+    public void addData(@RequestBody RecommendationPost post)
+    {
+        neo4jQuerys.createRecommendation(post);
+    }
+
+    /*
 
     @GetMapping("/{username}")
     public Person get(@PathVariable String username)
@@ -107,5 +133,7 @@ public class PersonController {
         m.addSeenListing(new Listing(pl.getListingId()));
         makeRepository.save(m);
     }
+
+     */
 
 }

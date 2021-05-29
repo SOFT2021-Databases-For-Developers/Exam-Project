@@ -1,7 +1,6 @@
-package neo4j.neo4jwebservice.dto;
+package app.models.neo4j;
 
 public class Recommendation {
-
     String make;
     int count;
 
@@ -16,13 +15,5 @@ public class Recommendation {
 
     public int getCount() {
         return count;
-    }
-
-    @Override
-    public String toString() {
-        return "Recommendation{" +
-                "make='" + make + '\'' +
-                ", count=" + count +
-                '}';
     }
 }

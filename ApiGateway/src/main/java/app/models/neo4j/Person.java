@@ -1,18 +1,9 @@
-package neo4j.neo4jwebservice.entities;
-
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+package app.models.neo4j;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@NodeEntity
 public class Person {
-
-    @Id
-    @GeneratedValue
     private Long id;
 
     private String name;
@@ -40,8 +31,6 @@ public class Person {
     public void setId(Long id) {
         this.id = id;
     }
-
-    @Relationship(type = "LIKES")
     public Set<Make> likes;
 
     public void addLike(Make m)
@@ -51,14 +40,5 @@ public class Person {
             likes = new HashSet<>();
         }
         likes.add(m);
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", likes=" + likes +
-                '}';
     }
 }
