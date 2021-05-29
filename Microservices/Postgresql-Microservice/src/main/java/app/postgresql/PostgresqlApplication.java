@@ -56,23 +56,20 @@ public class PostgresqlApplication implements CommandLineRunner {
         //makeRepository.saveAll(JsonReader.getMakesFromJson());
         //modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
         //carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
-        listingRepository.saveAll(GenerateFakeListings(true, 100));
+        //listingRepository.saveAll(GenerateFakeListings(true, 100));
         Car c = carRepository.findById(1184269).get();
-        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,Status.ACTIVE, c,new Date());
-        Listing l12 = new Listing("60b0dd2038366f397d145041","Car 2","A car 2",555,691, Status.ACTIVE, c,new Date());
-        Listing l13 = new Listing("60b0dd2038366f397d145041","Car 3","A car 3",444,696, Status.ACTIVE, c, new Date());
-
-        listingRepository.save(l11);
-        listingRepository.save(l12);
-        listingRepository.save(l13);
+//        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,Status.ACTIVE, c,new Date());
+//        Listing l12 = new Listing("60b0dd2038366f397d145041","Car 2","A car 2",555,691, Status.ACTIVE, c,new Date());
+//        Listing l13 = new Listing("60b0dd2038366f397d145041","Car 3","A car 3",444,696, Status.ACTIVE, c, new Date());
+//
+//        listingRepository.save(l11);
+//        listingRepository.save(l12);
+//        listingRepository.save(l13);
 
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
         System.out.println("Alright we good!");
         System.out.println("Duration: " + duration/1000 + " seconds.");
-        for (Listing l : listingRepository.findBySeller("60b0dd2038366f397d145041")) {
-            System.out.println(l);
-        }
 
     }
 

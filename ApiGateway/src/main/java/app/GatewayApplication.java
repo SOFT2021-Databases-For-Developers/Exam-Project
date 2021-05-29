@@ -1,5 +1,8 @@
 package app;
 
+import app.repositories.MongoService;
+import app.repositories.PostgresqlService;
+import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +19,15 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 // Feign enables dynamic processing of annotations
 public class GatewayApplication implements CommandLineRunner {
 
+    private final MongoService mongoService;
+    private final PostgresqlService postgresqlService;
+
+
+    public GatewayApplication(MongoService mongoService, PostgresqlService postgresqlService) {
+        this.mongoService = mongoService;
+        this.postgresqlService = postgresqlService;
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
 
@@ -23,10 +35,10 @@ public class GatewayApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //MailService ms = new MailService();
-        //Collection<Order> o = controller.retrieveAllOrders();
 
-        //ms.sendOrderConfirmationEmail(o.iterator().next());
+
+
+
     }
 }
 

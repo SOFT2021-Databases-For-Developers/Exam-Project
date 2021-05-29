@@ -14,6 +14,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*")
 public class MongoUsersController {
     private final MongoService mongoService;
     private final PostgresqlService postgresqlService;
@@ -31,12 +32,14 @@ public class MongoUsersController {
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<User> getUserById(@PathVariable String id) {
         User u = mongoService.getUserById(id);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/listings")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<Listing>> getListingsForUser(@PathVariable String id) {
         Collection<Listing> l = postgresqlService.getListingsBySeller(id);
         return new ResponseEntity<>(l, HttpStatus.OK);
@@ -44,6 +47,7 @@ public class MongoUsersController {
 
 
     @PostMapping("/login")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<UserDTO> loginUser(@RequestBody User user) {
         UserDTO foundUser = mongoService.loginUser(user);
         if(foundUser != null) {
