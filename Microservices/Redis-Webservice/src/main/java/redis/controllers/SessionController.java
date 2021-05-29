@@ -31,7 +31,7 @@ public class SessionController {
         return SessionRepo.get(sessionObject.getUsername());
     }
 
-    @PostMapping("/delete/{username}")
+    @DeleteMapping("/{username}")
     public void delete(@PathVariable String username)
     {
         SessionRepo.delete(username);
