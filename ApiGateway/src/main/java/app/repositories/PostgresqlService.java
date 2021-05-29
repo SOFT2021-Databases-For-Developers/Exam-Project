@@ -65,7 +65,6 @@ public interface PostgresqlService {
     Car deleteCarById(@PathVariable int id);
 
     /* LISTING */
-    /* CAR */
     @GetMapping("/listings")
     SimplePageImpl<Listing> getListings(Pageable pageable);
     @GetMapping("/listings/all")

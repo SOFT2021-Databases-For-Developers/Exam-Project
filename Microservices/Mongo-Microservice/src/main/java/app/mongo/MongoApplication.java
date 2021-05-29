@@ -74,15 +74,20 @@ public class MongoApplication implements CommandLineRunner {
         List<OrderLine> orderLines = Arrays.asList(ld1, ld2);
         List<OrderLine> orderLines2 = Arrays.asList(ld2, ld3);
         List<OrderLine> orderLines3 = Arrays.asList(ld1, ld2, ld3);
-        User cust1 = userRepo.findByMail("thomas@hey.dk");
-        User cust2 = userRepo.findByMail("Jonas@hey.dk");
-        User cust3 = userRepo.findByMail("Jonatan@hey.dk");
+        User cust1 = userRepo.findByEmail("thomas@hey.dk");
+        User cust2 = userRepo.findByEmail("Jonas@hey.dk");
+        User cust3 = userRepo.findByEmail("Jonatan@hey.dk");
         OrderOrder order = new OrderOrder(cust1, orderLines);
         OrderOrder order2 = new OrderOrder( cust2, orderLines2);
         OrderOrder order3 = new OrderOrder(cust3, orderLines3);
         orderRepo.save(order);
         orderRepo.save(order2);
         orderRepo.save(order3);
+
+        User user = userRepo.findByEmail("thomas@hey.dk");
+
+        System.out.println(">>>>>> " + Encrypt.checkPassword("asdad", user.getPassword()));
+        System.out.println(">>>>>>>>" + userRepo.findByEmail("thomas@hey.dk"));
 
 
 

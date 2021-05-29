@@ -11,24 +11,24 @@ public class User implements Serializable {
     private String id;
     private String firstName;
     private String lastName;
-    private String mail;
+    private String email;
     private String password;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String mail, String password) {
+    public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
     }
 
-    public User(String id, String firstName, String lastName, String mail, String password) {
+    public User(String id, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
     }
 
@@ -56,12 +56,12 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -85,7 +85,7 @@ public class User implements Serializable {
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", mail='" + mail + '\'' +
+                ", mail='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

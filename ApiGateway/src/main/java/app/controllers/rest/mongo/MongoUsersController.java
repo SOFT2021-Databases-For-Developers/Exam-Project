@@ -1,5 +1,6 @@
 package app.controllers.rest.mongo;
 
+import app.models.dto.UserDTO;
 import app.models.mongo.User;
 import app.models.postgresql.Listing;
 import app.repositories.MongoService;
@@ -40,4 +41,17 @@ public class MongoUsersController {
         Collection<Listing> l = postgresqlService.getListingsBySeller(id);
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
+
+
+    @PostMapping("/login")
+    public ResponseEntity<UserDTO> loginUser(@RequestBody User user) {
+        UserDTO foundUser = mongoService.loginUser(user);
+        if(foundUser != null) {
+            return new ResponseEntity<>(foundUser, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 }

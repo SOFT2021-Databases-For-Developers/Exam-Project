@@ -4,6 +4,7 @@ package app.mongo.controllers.user;
 import app.mongo.exceptions.NotFoundException;
 
 import app.mongo.helpers.Encrypt;
+import app.mongo.models.dto.UserDTO;
 import app.mongo.models.user.User;
 import app.mongo.repositories.user.UserRepository;
 import com.mongodb.MongoException;
@@ -32,7 +33,7 @@ public class UserController
     @GetMapping("/mail/{mail}")
     public User findByMail(@PathVariable String mail) throws NotFoundException, MongoException {
         try {
-            return repo.findByMail(mail);
+            return repo.findByEmail(mail);
         } catch (MongoException ex) {
             LOGGER.error("[LOGGER] ::: USER CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
             throw new NotFoundException(ex.getCode() + " : " + ex.getMessage());
@@ -60,6 +61,18 @@ public class UserController
             LOGGER.error("[LOGGER] ::: USER CONTROLLER ::: " + ex.getCode() + " ::: " + ex.getMessage());
 
             throw new NotFoundException(ex.getCode() + " : " + ex.getMessage());
+        }
+    }
+
+    @PostMapping("/login")
+    public UserDTO loginUser(@RequestBody User user) {
+        User foundUser = repo.findByEmail(user.getEmail());
+        boolean isValidated = Encrypt.checkPassword(user.getPassword(), foundUser.getPassword());
+        if (isValidated) {
+            UserDTO u = new UserDTO(foundUser);
+            return u;
+        } else {
+            return null;
         }
     }
 
