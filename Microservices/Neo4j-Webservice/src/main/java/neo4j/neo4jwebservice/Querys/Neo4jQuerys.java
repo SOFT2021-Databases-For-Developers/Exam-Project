@@ -83,6 +83,21 @@ public class Neo4jQuerys {
         }
     }
 
+    private Record getListing(String name, String make, long listingId)
+    {
+        try (Session session = driver.session(SessionConfig.forDatabase("neo4j"))) {
+
+            String cypherQuery =
+                    "MATCH(p:Person{name:$name})-[:LIKES]->(m:Make{make:$make})-[:SEEN]->(l:Listing{listingId:$listingId}) return l";
+            var r = session.readTransaction(tx -> tx.run(cypherQuery, parameters("name", name,"make", make, "listingId", listingId)));
+            if(r.hasNext())
+            {
+                return r.single();
+            }
+            return null;
+        }
+    }
+
     public void getEntirePathForPerson(String name)
     {
         try (Session session = driver.session(SessionConfig.forDatabase("neo4j"))) {
@@ -100,7 +115,6 @@ public class Neo4jQuerys {
     public List<Recommendation> getRecommendationsForPerson(String name)
     {
         List<Recommendation> recommendations = new ArrayList<>();
-        //match(n:Person{name:'Jonas'})-[]->(m:Make)-[]->(l:Listing) return {label: m.make, count: count(l)}
         try (Session session = driver.session(SessionConfig.forDatabase("neo4j"))) {
 
             String cypherQuery =
@@ -133,7 +147,11 @@ public class Neo4jQuerys {
             {
                 createMake(rp.getName(), rp.getMake());
             }
-            createListing(rp.getName(), rp.getMake(), rp.getListingId());
+            r = getListing(rp.getName(), rp.getMake(), rp.getListingId());
+            if(r == null)
+            {
+                createListing(rp.getName(), rp.getMake(), rp.getListingId());
+            }
         }
         catch (Exception e)
         {
