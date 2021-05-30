@@ -49,7 +49,7 @@ public class PostgresqlApplication implements CommandLineRunner {
 
         System.out.println("Hol' up, preparing the database...");
 
-        listingRepository.deleteAll();
+        //listingRepository.deleteAll();
         //carRepository.deleteAll();
         //modelRepository.deleteAll();
         //makeRepository.deleteAll();
@@ -57,7 +57,7 @@ public class PostgresqlApplication implements CommandLineRunner {
         //modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
         //carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
         //listingRepository.saveAll(GenerateFakeListings(true, 100));
-        Car c = carRepository.findById(1184269).get();
+       // Car c = carRepository.findById(1184269).get();
 //        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,Status.ACTIVE, c,new Date());
 //        Listing l12 = new Listing("60b0dd2038366f397d145041","Car 2","A car 2",555,691, Status.ACTIVE, c,new Date());
 //        Listing l13 = new Listing("60b0dd2038366f397d145041","Car 3","A car 3",444,696, Status.ACTIVE, c, new Date());

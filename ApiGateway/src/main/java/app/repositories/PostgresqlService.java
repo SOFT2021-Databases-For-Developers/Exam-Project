@@ -2,10 +2,7 @@ package app.repositories;
 
 import app.config.RibbonConfig;
 import app.models.SimplePageImpl;
-import app.models.postgresql.Car;
-import app.models.postgresql.Listing;
-import app.models.postgresql.Make;
-import app.models.postgresql.Model;
+import app.models.postgresql.*;
 import app.repositories.setup.FeignConfig;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -25,7 +22,7 @@ public interface PostgresqlService {
     @GetMapping("/makes")
     SimplePageImpl<Make> getMakes(Pageable pageable);
     @GetMapping("/makes/all")
-    Collection<Make> getMakesUnpaginated();
+    Collection<Make> getMakesUnPaginated();
     @GetMapping("/makes/{id}")
     Make getMakeById(@PathVariable int id);
     @PutMapping("/makes/{id}")
@@ -40,7 +37,7 @@ public interface PostgresqlService {
     @GetMapping("/models")
     SimplePageImpl<Model> getModels(Pageable pageable);
     @GetMapping("/models/all")
-    Collection<Model> getModelsUnpaginated();
+    Collection<Model> getModelsUnPaginated();
     @GetMapping("/models/{id}")
     Model getModelById(@PathVariable int id);
     @PutMapping("/models/{id}")
@@ -53,7 +50,7 @@ public interface PostgresqlService {
     /* CAR */
     @GetMapping("/cars")
     SimplePageImpl<Car> getCars(Pageable pageable);
-    @GetMapping("/models/all")
+    @GetMapping("/cars/all")
     Collection<Car> getCarsUnPaginated();
     @GetMapping("/cars/{id}")
     Car getCarById(@PathVariable int id);
@@ -73,9 +70,10 @@ public interface PostgresqlService {
     Listing getListingsById(@PathVariable int id);
     @GetMapping("/listings/seller/{seller}")
     Collection<Listing> getListingsBySeller(@PathVariable String seller);
-
     @PutMapping("/listings/{id}")
     Listing updateListing(@PathVariable int id, @RequestBody Listing listing);
+    @PutMapping("/listings/{id}/status/set/{status}")
+    Listing updateListingStatus(@PathVariable Integer id, @PathVariable Status status);
     @PostMapping("/listings")
     Listing saveListing(@RequestBody Listing listing);
     @DeleteMapping("listings/{id}")

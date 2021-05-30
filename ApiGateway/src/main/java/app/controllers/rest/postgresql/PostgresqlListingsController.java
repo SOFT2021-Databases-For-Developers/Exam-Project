@@ -2,6 +2,7 @@ package app.controllers.rest.postgresql;
 
 import app.models.mongo.User;
 import app.models.postgresql.Listing;
+import app.models.postgresql.Status;
 import app.repositories.MongoService;
 import app.repositories.PostgresqlService;
 import org.springframework.data.domain.Page;
@@ -55,7 +56,7 @@ public class PostgresqlListingsController {
     @CrossOrigin(origins = "*")
     public ResponseEntity<Listing> createListing(@RequestBody Listing listing) {
         User _user = mongoService.getUserById(listing.getSeller());
-        System.out.println("TEST::::::: " + _user);
+        System.out.println(_user);
         try {
             Listing _listing = new Listing();
             _listing.setSeller(_user.getId());
@@ -65,7 +66,6 @@ public class PostgresqlListingsController {
             _listing.setKm(listing.getKm());
             _listing.setDescription(listing.getDescription());
             _listing.setTitle(listing.getTitle());
-            System.out.println("TEST:::::::: " + listing);
             return new ResponseEntity<>(postgresqlService.saveListing(_listing), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -85,6 +85,17 @@ public class PostgresqlListingsController {
             return new ResponseEntity<>(postgresqlService.saveListing(_listing), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{id}/status/set/{status}")
+    public ResponseEntity<Listing> updateListingStatus(@PathVariable int id, @PathVariable Status status) {
+        Listing l = postgresqlService.getListingsById(id);
+        if (l != null && ((status.equals(Status.ACTIVE) || (status.equals(Status.SOLD))))) {
+            l.setStatus(status);
+            return new ResponseEntity<>(postgresqlService.saveListing(l), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 

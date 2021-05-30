@@ -1,24 +1,17 @@
 package app.mongo;
 
 
-import app.mongo.helpers.Encrypt;
-
-import app.mongo.models.item.Item;
-import app.mongo.models.order.OrderLine;
-import app.mongo.models.order.OrderOrder;
-import app.mongo.models.user.User;
-
-import app.mongo.repositories.item.ItemService;
+import app.mongo.models.dto.UserDTO;
+import app.mongo.models.order.*;
 import app.mongo.repositories.order.OrderService;
 import app.mongo.repositories.user.UserRepository;
 import io.github.kaiso.relmongo.config.EnableRelMongo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 @EnableDiscoveryClient
@@ -29,15 +22,13 @@ public class MongoApplication implements CommandLineRunner {
     private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(String.valueOf(MongoApplication.class));
 
 
-    @Autowired
-    UserRepository userRepo;
-    ItemService itemRepo;
-    OrderService orderRepo;
 
-    MongoApplication(UserRepository userRepo, ItemService itemRepo, OrderService orderRepo) {
+    private final UserRepository userRepo;
+    private final OrderService orderService;
+
+    public MongoApplication(UserRepository userRepo, OrderService orderService) {
         this.userRepo = userRepo;
-        this.itemRepo = itemRepo;
-        this.orderRepo = orderRepo;
+        this.orderService = orderService;
     }
 
     public static void main(String[] args){SpringApplication.run(MongoApplication.class, args); }
@@ -45,9 +36,20 @@ public class MongoApplication implements CommandLineRunner {
     @Override
     public void run(String ...args) throws Exception{
 
-//        userRepo.deleteAll();
-//        orderRepo.deleteAll();
-//        itemRepo.deleteAll();
+        orderService.deleteAll();
+
+
+        UserDTO user = new UserDTO(userRepo.findByEmail("test@test.com"));
+        List<Integer> itemList = new ArrayList<>();
+        itemList.add(1208651);
+        itemList.add(1208652);
+        itemList.add(1208653);
+        orderService.save(new NewOrder(user, itemList));
+
+
+            //userRepo.deleteAll();
+            //orderRepo.deleteAll();
+            //itemRepo.deleteAll();
 //
 //
 //

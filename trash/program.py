@@ -34,4 +34,3 @@ with open('car_model_list.json', 'r', encoding='utf8') as json_data:
             print("Added Model:", r.text)
         except Exception as ex:
             print(ex)
-

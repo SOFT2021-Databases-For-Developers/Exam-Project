@@ -1,6 +1,7 @@
 package app.postgresql.controllers;
 
 import app.postgresql.models.Car;
+import app.postgresql.models.Listing;
 import app.postgresql.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,12 +23,16 @@ public class CarsController {
     @CrossOrigin(origins = "*")
     public ResponseEntity<Page<Car>> getCarsPaginated(Pageable pageable) {
         Page<Car> l = carRepository.findAll(pageable);
-        return new ResponseEntity<>(l, HttpStatus.OK);
+        if (l.getSize() != 0 ) {
+            return new ResponseEntity<>(l, HttpStatus.OK);
+        }  else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/all")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<Collection<Car>> getCarsUnPaginated() {
+    public ResponseEntity<Collection<Car>> getCarsUnpaginated() {
         Collection<Car> l = carRepository.findAll();
         return new ResponseEntity<>(l, HttpStatus.OK);
     }

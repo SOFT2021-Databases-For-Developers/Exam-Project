@@ -1,6 +1,8 @@
 package app.postgresql.controllers;
 
+import app.postgresql.helpers.Generator;
 import app.postgresql.models.Listing;
+import app.postgresql.models.Status;
 import app.postgresql.repositories.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -69,7 +71,8 @@ public class ListingsController {
             _listing.setCreated_on(new Date());
             _listing.setKm(listing.getKm());
             _listing.setDescription(listing.getDescription());
-            _listing.setTitle(listing.getTitle());
+            _listing.setTitle(Generator.GenerateListingTitle(_listing.getCar().getMake().getName(), _listing.getCar().getModel().getName(), _listing.getCar().getModel().getYear(), _listing.getKm()));
+            _listing.setStatus(Status.ACTIVE);
             return new ResponseEntity<>(listingRepository.save(_listing), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -89,6 +92,17 @@ public class ListingsController {
             return new ResponseEntity<>(listingRepository.save(_listing), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{id}/status/set/{status}")
+    public ResponseEntity<Listing> updateListingStatus(@PathVariable int id, @PathVariable Status status) {
+        Listing l = listingRepository.findOneById(id);
+        if (l != null && ((status.equals(Status.ACTIVE) || (status.equals(Status.SOLD))))) {
+            l.setStatus(status);
+            return new ResponseEntity<>(listingRepository.save(l), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 

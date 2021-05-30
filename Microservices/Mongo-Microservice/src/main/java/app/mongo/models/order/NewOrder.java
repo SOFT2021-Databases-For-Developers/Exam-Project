@@ -1,6 +1,6 @@
 package app.mongo.models.order;
 
-
+import app.mongo.models.dto.UserDTO;
 import app.mongo.models.user.User;
 import io.github.kaiso.relmongo.annotation.*;
 import lombok.Data;
@@ -14,31 +14,21 @@ import java.util.List;
 
 @Data
 @Document(collection ="orders")
-public class OrderOrder {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+public class NewOrder {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private Date createdAt;
-    @ManyToOne(fetch= FetchType.EAGER)
-    @JoinProperty(name = "users")
-    private User user;
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinProperty(name = "orderlines")
-    private List<OrderLine> orderLines;
+    private UserDTO user;
+    private List<Integer> listingIds;
 
-    public OrderOrder() {
+    public NewOrder() {
     }
 
-    public OrderOrder(String id, Date createdAt, User user, List<OrderLine> orderLines) {
-        this.id = id;
-        this.createdAt = createdAt;
+    public NewOrder(UserDTO user, List<Integer> listingIds) {
         this.user = user;
-        this.orderLines = orderLines;
-    }
-
-    public OrderOrder( User user, List<OrderLine> orderLines) {
-        this.createdAt = createdAt;
-        this.user = user;
-        this.orderLines = orderLines;
+        this.listingIds = listingIds;
+        this.createdAt = new Date();
     }
 
     public String getId() {
@@ -49,6 +39,7 @@ public class OrderOrder {
         this.id = id;
     }
 
+
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -57,29 +48,29 @@ public class OrderOrder {
         this.createdAt = createdAt;
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 
-    public List<OrderLine> getOrderLines() {
-        return orderLines;
+    public List<Integer> getListingIds() {
+        return listingIds;
     }
 
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
+    public void setListingIds(List<Integer> listingIds) {
+        this.listingIds = listingIds;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "NewOrder{" +
                 "id='" + id + '\'' +
                 ", createdAt=" + createdAt +
                 ", user=" + user +
-                ", orderLines=" + orderLines +
+                ", listingIds=" + listingIds +
                 '}';
     }
 }

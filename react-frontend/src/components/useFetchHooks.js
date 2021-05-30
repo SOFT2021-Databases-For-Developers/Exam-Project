@@ -2,7 +2,7 @@ import { useReducer, useEffect } from "react";
 import axios from "axios";
 
 const BASE_URL =
-  "http://localhost:25001/listings?page=1&size=10";
+  "https://www.cheapshark.com/api/1.0/deals?storeID=1&pageSize=5";
 
 
 const ACTIONS = {
@@ -17,7 +17,7 @@ function reducer(state, action) {
       case ACTIONS.MAKE_REQUEST:
         return { loading: true, games: [] };
       case ACTIONS.GET_DATA:
-        return { ...state, loading: false, games: action.payload.games.content };
+        return { ...state, loading: false, games: action.payload.games };
       case ACTIONS.ERROR:
         return {
           ...state,

@@ -29,7 +29,7 @@ public class PostgresqlMakesController {
     @GetMapping("/all")
     @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<Make>> getMakesUnpaginated() {
-        Collection<Make> l = postgresqlService.getMakesUnpaginated();
+        Collection<Make> l = postgresqlService.getMakesUnPaginated();
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
 

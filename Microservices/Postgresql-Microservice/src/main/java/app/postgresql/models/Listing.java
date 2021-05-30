@@ -26,7 +26,7 @@ public class Listing implements Serializable {
     private Status status;
 
     @ManyToOne
-    @JoinColumn (name="car_id")
+    @JoinColumn (name="car")
     private Car car;
 
     @Column(name = "created_on")

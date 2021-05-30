@@ -1,7 +1,6 @@
 package app.controllers.rest.postgresql;
 
 import app.models.postgresql.Car;
-import app.models.postgresql.Make;
 import app.repositories.PostgresqlService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/cars")
@@ -30,7 +28,7 @@ public class PostgresqlCarsController {
 
     @GetMapping("/all")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<Collection<Car>> getCarsUnPaginated() {
+    public ResponseEntity<Collection<Car>> getCarsUnpaginated() {
         Collection<Car> l = postgresqlService.getCarsUnPaginated();
         return new ResponseEntity<>(l, HttpStatus.OK);
     }

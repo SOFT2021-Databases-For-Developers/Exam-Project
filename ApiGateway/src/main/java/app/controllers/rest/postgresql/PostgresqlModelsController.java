@@ -29,7 +29,7 @@ public class PostgresqlModelsController {
     @GetMapping("/all")
     @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<Model>> getModelsUnpaginated() {
-        Collection<Model> l = postgresqlService.getModelsUnpaginated();
+        Collection<Model> l = postgresqlService.getModelsUnPaginated();
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
