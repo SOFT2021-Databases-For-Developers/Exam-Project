@@ -8,6 +8,7 @@ import neo4j.neo4jwebservice.repository.MakeRepository;
 import neo4j.neo4jwebservice.repository.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
@@ -17,8 +18,10 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
 
+
+//@EnableNeo4jRepositories
+@EnableDiscoveryClient
 @SpringBootApplication
-@EnableNeo4jRepositories
 public class Neo4jwebserviceApplication {
 
     private final static Logger log = LoggerFactory.getLogger(Neo4jwebserviceApplication.class);
@@ -27,6 +30,7 @@ public class Neo4jwebserviceApplication {
         SpringApplication.run(Neo4jwebserviceApplication.class, args);
     }
 
+    /*
     @Bean
     CommandLineRunner demo(PersonRepository personRepository, ListingRepository listingRepository, MakeRepository makeRepository) {
         return args -> {
@@ -65,4 +69,7 @@ public class Neo4jwebserviceApplication {
 
         };
     }
+
+     */
 }
+

@@ -1,17 +1,7 @@
-package neo4j.neo4jwebservice.entities;
+package app.models.neo4j;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
-
-@NodeEntity
 public class Listing {
-
-    @Id @GeneratedValue private Long id;
+    private Long id;
 
     private long listingId;
 
