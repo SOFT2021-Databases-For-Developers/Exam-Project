@@ -43,7 +43,7 @@ public class Neo4jQuerys {
         try (Session session = driver.session(SessionConfig.forDatabase("neo4j"))) {
 
             String cypherQuery =
-                    "CREATE (n:Person {name:$name, title: 'Developer'});";
+                    "CREATE (n:Person {name:$name});";
             session.writeTransaction(tx -> tx.run(cypherQuery, parameters("name", name)));
         }
     }
