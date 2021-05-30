@@ -38,6 +38,6 @@ public interface MongoService {
     Collection<Order> getOrdersByUser(@PathVariable String user);
     @PostMapping("/orders")
     Order createOrder(@RequestBody Order order);
-    @DeleteMapping("/orders")
+    @DeleteMapping("/orders/{id}")
     Order deleteOrderById(@PathVariable String id);
 }

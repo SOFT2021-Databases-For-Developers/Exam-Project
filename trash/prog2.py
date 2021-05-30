@@ -10,7 +10,7 @@ def createUsers(amount) :
     while(ob < amount):
         hash = random.getrandbits(1000)
         email = str(hash) + "@mail.com"
-        data = requests.post("http://localhost:25000/users", json={"firstName": "fname", "lastName" : "lname", "email" : email, "password" : "1234"})
+        data = requests.post("http://localhost:25002/users", json={"firstName": "fname", "lastName" : "lname", "email" : email, "password" : "1234"})
         ob = ob+1
 
 def createListingsForUsers(amount):
@@ -41,7 +41,7 @@ def createListingsForUsers(amount):
             
         print(listing)
 
-        requests.post("http://localhost:25001/listings", json = (listing))
+        requests.post("http://localhost:25000/listings", json = (listing))
         ob = ob+1
         
     

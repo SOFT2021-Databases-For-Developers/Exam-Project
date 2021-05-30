@@ -1,9 +1,8 @@
 package app.postgresql;
 
 import app.postgresql.helpers.Generator;
-import app.postgresql.models.Car;
-import app.postgresql.models.Listing;
-import app.postgresql.models.Status;
+import app.postgresql.helpers.JsonReader;
+import app.postgresql.models.*;
 import app.postgresql.repositories.CarRepository;
 import app.postgresql.repositories.ListingRepository;
 import app.postgresql.repositories.MakeRepository;
@@ -53,9 +52,23 @@ public class PostgresqlApplication implements CommandLineRunner {
         //carRepository.deleteAll();
         //modelRepository.deleteAll();
         //makeRepository.deleteAll();
-        //makeRepository.saveAll(JsonReader.getMakesFromJson());
-        //modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
-        //carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
+
+        Collection<Make> makes = makeRepository.findAll();
+        Collection<Model> models = modelRepository.findAll();
+        Collection<Car> cars = carRepository.findAll();
+        if(makes.size() <= 0) {
+            makeRepository.saveAll(JsonReader.getMakesFromJson());
+        }
+        if(models.size() <=0) {
+            modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
+        }
+        if(cars.size() <= 0) {
+            carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
+        }
+
+
+
+
         //listingRepository.saveAll(GenerateFakeListings(true, 100));
        // Car c = carRepository.findById(1184269).get();
 //        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,Status.ACTIVE, c,new Date());

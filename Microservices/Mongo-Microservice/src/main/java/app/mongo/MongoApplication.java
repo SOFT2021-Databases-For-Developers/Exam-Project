@@ -38,15 +38,6 @@ public class MongoApplication implements CommandLineRunner {
 
         orderService.deleteAll();
 
-
-        UserDTO user = new UserDTO(userRepo.findByEmail("test@test.com"));
-        List<Integer> itemList = new ArrayList<>();
-        itemList.add(1208651);
-        itemList.add(1208652);
-        itemList.add(1208653);
-        orderService.save(new NewOrder(user, itemList));
-
-
             //userRepo.deleteAll();
             //orderRepo.deleteAll();
             //itemRepo.deleteAll();
