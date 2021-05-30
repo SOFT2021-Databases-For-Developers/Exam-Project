@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("listings")
@@ -32,12 +33,13 @@ public class PostgresqlListingsController {
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/make/{name}")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<Collection<Listing>> getListingsUnPaginated() {
-        Collection<Listing> l = postgresqlService.getListingsUnPaginated();
+    public ResponseEntity<Collection<Listing>> getListingsPaginatedByMake(@PathVariable String name) {
+        Collection<Listing> l = postgresqlService.getListingsByMake(name);
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
+
 
 
 

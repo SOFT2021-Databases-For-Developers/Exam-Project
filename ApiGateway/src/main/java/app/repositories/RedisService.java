@@ -15,7 +15,7 @@ public interface RedisService {
     @GetMapping("/{username}")
     SessionObject get(@PathVariable String username);
 
-    @PostMapping("/")
+    @PostMapping("")
     SessionObject add(@RequestBody SessionObject sessionObject);
 
     @DeleteMapping("/{username}")

@@ -36,6 +36,12 @@ public class ListingsController {
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
+    @GetMapping("/make/{name}")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<Collection<Listing>> getListingsPaginatedByMake(@PathVariable String name) {
+        Collection<Listing> l = listingRepository.findByCarMakeName(name);
+        return new ResponseEntity<>(l, HttpStatus.OK);
+    }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -48,6 +54,8 @@ public class ListingsController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+
+
 
     @RequestMapping(value = "/seller/{seller}", method = RequestMethod.GET)
     @CrossOrigin(origins = "*")

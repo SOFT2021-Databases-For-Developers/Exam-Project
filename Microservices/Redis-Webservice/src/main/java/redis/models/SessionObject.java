@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SessionObject implements Serializable {
     private String username;
-        private List<String> shoppingCart;
+    private List<String> shoppingCart;
 
     public SessionObject(String username, List<String> shoppingCart) {
         this.username = username;

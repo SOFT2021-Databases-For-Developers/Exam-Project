@@ -24,7 +24,7 @@ public class SessionController {
         return SessionRepo.get(username);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public SessionObject add(@RequestBody SessionObject sessionObject)
     {
         SessionRepo.save(sessionObject);

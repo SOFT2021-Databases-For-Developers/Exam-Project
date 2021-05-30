@@ -70,6 +70,8 @@ public interface PostgresqlService {
     Listing getListingsById(@PathVariable int id);
     @GetMapping("/listings/seller/{seller}")
     Collection<Listing> getListingsBySeller(@PathVariable String seller);
+    @GetMapping("/listings/make/{name}")
+    Collection<Listing> getListingsByMake(@PathVariable String name);
     @PutMapping("/listings/{id}")
     Listing updateListing(@PathVariable int id, @RequestBody Listing listing);
     @PutMapping("/listings/{id}/status/set/{status}")

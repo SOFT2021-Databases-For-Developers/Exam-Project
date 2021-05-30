@@ -19,7 +19,7 @@ public class RedisSessionController {
         return redisService.get(username);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public SessionObject add(@RequestBody SessionObject sessionObject)
     {
         return redisService.add(sessionObject);
