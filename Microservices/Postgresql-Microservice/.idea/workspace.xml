@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6b484f8-02c9-48a9-b82a-9bd454720646" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,17 +93,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PostgresqlApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Postgresql-Microservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="app.postgresql.PostgresqlApplication" />
@@ -133,6 +122,7 @@
       <workItem from="1622363281965" duration="2235000" />
       <workItem from="1622367686584" duration="1622000" />
       <workItem from="1622539733347" duration="8536000" />
+      <workItem from="1622551759004" duration="39000" />
     </task>
     <servers />
   </component>

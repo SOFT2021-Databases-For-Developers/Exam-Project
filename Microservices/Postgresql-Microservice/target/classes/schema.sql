@@ -5,12 +5,12 @@ DROP TABLE IF EXISTS makes CASCADE;
 DROP TABLE IF EXISTS test CASCADE;
 
 CREATE TABLE public.makes (
-                              id integer NOT NULL,
+                              id SERIAL NOT NULL,
                               name character varying(255)
 );
 
 CREATE TABLE public.models (
-                               id integer NOT NULL,
+                               id SERIAL NOT NULL,
                                name character varying(255),
                                year integer NOT NULL,
                                make_id integer
@@ -18,13 +18,13 @@ CREATE TABLE public.models (
 
 
 CREATE TABLE public.cars (
-                             id integer NOT NULL,
+                             id SERIAL NOT NULL,
                              make_id integer,
                              model_id integer
 );
 
 CREATE TABLE public.listings (
-                                 id integer NOT NULL,
+                                 id SERIAL NOT NULL,
                                  created_on timestamp without time zone,
                                  description character varying(255),
                                  km integer,
