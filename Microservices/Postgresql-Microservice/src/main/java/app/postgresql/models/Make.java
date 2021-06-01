@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Table(name = "makes")
 public class Make implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
 
     @Column(unique = true)

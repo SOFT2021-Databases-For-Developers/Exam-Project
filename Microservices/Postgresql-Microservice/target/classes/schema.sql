@@ -5,51 +5,36 @@ DROP TABLE IF EXISTS makes CASCADE;
 DROP TABLE IF EXISTS test CASCADE;
 
 CREATE TABLE public.makes (
-                              id SERIAL NOT NULL,
+                              id SERIAL PRIMARY KEY,
                               name character varying(255)
 );
 
 CREATE TABLE public.models (
-                               id SERIAL NOT NULL,
+                               id SERIAL PRIMARY KEY,
                                name character varying(255),
                                year integer NOT NULL,
-                               make_id integer
+                               make_id integer NOT NULL,
+                               CONSTRAINT fk_make_id FOREIGN KEY (make_id) REFERENCES public.makes(id)
 );
 
 
 CREATE TABLE public.cars (
-                             id SERIAL NOT NULL,
-                             make_id integer,
-                             model_id integer
+                             id SERIAL PRIMARY KEY,
+                             make_id integer NOT NULL,
+                             model_id integer NOT NULL,
+                             CONSTRAINT fk_make_id FOREIGN KEY (make_id) REFERENCES public.makes(id),
+                             CONSTRAINT fk_model_id FOREIGN KEY (make_id) REFERENCES public.makes(id)
 );
 
 CREATE TABLE public.listings (
-                                 id SERIAL NOT NULL,
-                                 created_on timestamp without time zone,
-                                 description character varying(255),
-                                 km integer,
-                                 price real,
-                                 seller character varying(255),
-                                 status integer,
-                                 title character varying(255),
-                                 car integer
+                                 id SERIAL PRIMARY KEY,
+                                 created_on timestamp without time zone not null,
+                                 description character varying(255) not null,
+                                 km integer  not null,
+                                 price real  not null,
+                                 seller character varying(255) not null,
+                                 status integer  not null,
+                                 title character varying(255) not null,
+                                 car integer not null,
+                                 CONSTRAINT fk_car FOREIGN KEY (car) REFERENCES public.cars(id)
 );
-
-
-ALTER TABLE ONLY public.makes
-    ADD CONSTRAINT uk_9pxjtve5c50fx3aq64dhb4f8m UNIQUE (name);
-
-ALTER TABLE ONLY public.models
-    ADD CONSTRAINT fk8fm3p80h4dh513qubnxd2qefl FOREIGN KEY (make_id) REFERENCES public.makes(id);
-
-ALTER TABLE ONLY public.cars
-    ADD CONSTRAINT cars_pkey PRIMARY KEY (id);
-ALTER TABLE ONLY public.cars
-    ADD CONSTRAINT fk1r9ljf5fdgjbm7jr4ljbagfso FOREIGN KEY (make_id) REFERENCES public.makes(id);
-ALTER TABLE ONLY public.cars
-    ADD CONSTRAINT fkrwe6b2vd08hb4gnst223xsna4 FOREIGN KEY (model_id) REFERENCES public.models(id);
-
-ALTER TABLE ONLY public.listings
-    ADD CONSTRAINT listings_pkey PRIMARY KEY (id);
-ALTER TABLE ONLY public.listings
-    ADD CONSTRAINT fkdtu09li3gnxfovtbc8gcy0ch1 FOREIGN KEY (car) REFERENCES public.cars(id);

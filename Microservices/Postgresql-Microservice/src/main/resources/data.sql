@@ -19737,4 +19737,5 @@ INSERT INTO public.cars (id, make_id, model_id) VALUES (21119, 1409, 1619);
 INSERT INTO public.cars (id, make_id, model_id) VALUES (21120, 1405, 1600);
 INSERT INTO public.cars (id, make_id, model_id) VALUES (21121, 1402, 1552);
 
-INSERT INTO public.listings(id, created_on, description, title, seller, km, price, status, car) VALUES (1, '2021-06-01 11:12:12.713', 'This is a test listing, i wont worh through api gateway', 'Test', 'SELLER-ID-12312', 1234, 1234, 1, 11286);
+INSERT INTO public.listings(id, created_on, description, title, seller, km, price, status, car) VALUES (999999, '2021-06-01 11:12:12.713', 'This is a test listing', 'Test', 'SELLER-ID-12312', 1234, 1234, 1, 11286);
+INSERT INTO public.listings(id, created_on, description, title, seller, km, price, status, car) VALUES (999998, '2021-06-01 11:12:12.713', 'Test test, i wont worh through api gateway', 'Test', 'SELLER-ID-12312', 1234, 1234, 1, 11286);
