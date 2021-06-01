@@ -37,6 +37,21 @@ services:
       - postgres
     entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
+  neo4j-api:
+    build:
+      context: Microservices/Neo4j-Webservice
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+      - discovery
+    ports:
+      - "25004:25004"
+    links:
+      - neo4j
+    entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
 
   redis-api:
     build:
@@ -51,6 +66,24 @@ services:
       - "25003:25003"
     links:
       - redis
+    entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
+  gateway-api:
+    build:
+      context: ApiGateway
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+      - discovery
+    ports:
+      - "25000:25000"
+    links:
+      - redis
+      - mongo
+      - neo4j
+      - postgres
     entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
   postgres:

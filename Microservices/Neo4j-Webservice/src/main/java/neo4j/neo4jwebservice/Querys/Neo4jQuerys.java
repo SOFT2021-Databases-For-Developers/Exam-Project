@@ -14,7 +14,8 @@ public class Neo4jQuerys {
     Driver driver;
 
     public Neo4jQuerys() {
-        this.driver = GraphDatabase.driver("bolt://localhost:7687",
+        //this.driver = GraphDatabase.driver("bolt://localhost:7687",
+        this.driver = GraphDatabase.driver("bolt://neo4j:7687",
                 AuthTokens.basic("neo4j","admin"));
     }
 
