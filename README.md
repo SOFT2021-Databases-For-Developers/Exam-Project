@@ -2,4 +2,5 @@
 - Jonatan Bakke https://github.com/JonatanMagnusBakke
 - Jonas Hein - https://github.com/Zenzus
 - Thomas Ebsen - https://github.com/Srax 
-- Document - [Link](/Misc/ExamProjectRequirements.pdf)
+- Assignment - [assignment.pdf](/documents/assignment.pdf)
+- Rapport - [rapport.pdf](/documents/dbd-exam-pdf.pdf)
