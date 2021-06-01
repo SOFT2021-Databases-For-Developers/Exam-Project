@@ -1,5 +1,27 @@
-version: '3.8'
+version: '5'
 services:
+  discovery:
+    build:
+      context: Microservices/Microservice-Discovery-Application
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+
+  mongo-api:
+    build:
+      context: Microservices/Mongo-Microservice
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+      - discovery
+    ports:
+      - "25002:25002"
+    links:
+      - mongo
+    entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
   postgres:
     container_name: pg_container
     image: postgres
@@ -10,6 +32,7 @@ services:
       POSTGRES_DB: exam_db
     ports:
       - "5432:5432"
+
   pgadmin:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
@@ -20,11 +43,8 @@ services:
     ports:
       - "5050:80"
 
-  mongodb_container:
+  mongo:
     image: mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
     ports:
       - 27017:27017
     volumes:
@@ -51,7 +71,6 @@ services:
       - "7687:7687"
     environment:
       NEO4J_AUTH: neo4j/admin
-      NEO4J_dbms_logs_debug_level: DEBUG
-      
+      NEO4J_dbms_logs_debug_level: DEBUG 
 volumes:
   mongodb_data_container:

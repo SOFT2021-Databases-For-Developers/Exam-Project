@@ -1,0 +1,11 @@
+app\mongo\repositories\user\UserRepository.class
+app\mongo\helpers\Encrypt.class
+app\mongo\models\dto\UserDTO.class
+app\mongo\models\order\NewOrder.class
+app\mongo\repositories\order\OrderService.class
+app\mongo\controllers\user\UserController.class
+app\mongo\MongoApplication.class
+app\mongo\controllers\order\OrderServiceController.class
+app\mongo\exceptions\NotFoundException.class
+app\mongo\models\user\User.class
+app\mongo\configuration\DatabaseConfiguration.class
