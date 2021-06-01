@@ -35,13 +35,10 @@ CREATE TABLE public.listings (
                                  car integer
 );
 
-ALTER TABLE ONLY public.makes
-    ADD CONSTRAINT makes_pkey PRIMARY KEY (id);
+
 ALTER TABLE ONLY public.makes
     ADD CONSTRAINT uk_9pxjtve5c50fx3aq64dhb4f8m UNIQUE (name);
 
-ALTER TABLE ONLY public.models
-    ADD CONSTRAINT models_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.models
     ADD CONSTRAINT fk8fm3p80h4dh513qubnxd2qefl FOREIGN KEY (make_id) REFERENCES public.makes(id);
 
