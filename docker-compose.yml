@@ -22,6 +22,37 @@ services:
       - mongo
     entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
 
+  postgres-api:
+    build:
+      context: Microservices/Postgresql-Microservice
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+      - discovery
+    ports:
+      - "25001:25001"
+    links:
+      - postgres
+    entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
+
+  redis-api:
+    build:
+      context: Microservices/Redis-Webservice
+      dockerfile: Dockerfile
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://discovery:8761/eureka
+    depends_on:
+      - discovery
+    ports:
+      - "25003:25003"
+    links:
+      - redis
+    entrypoint: "java -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
+
   postgres:
     container_name: pg_container
     image: postgres

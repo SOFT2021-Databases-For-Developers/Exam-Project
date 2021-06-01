@@ -1,9 +1,29 @@
 
 import json, requests
+from typing import SupportsRound
 from requests.api import request   
 import hashlib
 
 import random
+
+def createMakesModelsCars() :
+    make_arr = []
+    make_arr_cleaned = []
+    with open('car_model_list.json', 'r', encoding='utf8') as json_data:
+        data = json.load(json_data)
+        for obj in data["results"]:
+            make = obj["make"]
+            try:
+                make_arr.append(make)
+            except Exception as ex:
+                print(ex)
+    
+    
+    for make in make_arr: 
+        if make not in make_arr_cleaned:
+            make_arr_cleaned.append(make)
+    print(len(make_arr))
+    print(len(make_arr_cleaned))
 
 def createUsers(amount) :
     ob = 1
@@ -47,4 +67,6 @@ def createListingsForUsers(amount):
     
 
 ##createUsers(100)
-createListingsForUsers(5000)
+##createListingsForUsers(5000)
+
+createMakesModelsCars()

@@ -39,45 +39,10 @@ public class PostgresqlApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception { ;
         long startTime = System.currentTimeMillis();
-        //PopulateDB(true, 10, true);
-        //listingRepo.saveAll(GenerateFakeListings(true, 1000));
+        System.out.println("Car count: " + carRepository.findAll().size());
 
-        //Pageable firstPageWithTwoElements = PageRequest.of(0, 100);
-        //Pageable sortByDate = PageRequest.of(0, 10, Sort.by("price").descending());
-        //Page<Listing> allListings = listingRepository.findAll(sortByDate);
-
-        System.out.println("Hol' up, preparing the database...");
-
-        //listingRepository.deleteAll();
-        //carRepository.deleteAll();
-        //modelRepository.deleteAll();
-        //makeRepository.deleteAll();
-
-        Collection<Make> makes = makeRepository.findAll();
-        Collection<Model> models = modelRepository.findAll();
-        Collection<Car> cars = carRepository.findAll();
-        if(makes.size() <= 0) {
-            makeRepository.saveAll(JsonReader.getMakesFromJson());
-        }
-        if(models.size() <=0) {
-            modelRepository.saveAll(JsonReader.getModelsAndMakesFromJson(makeRepository));
-        }
-        if(cars.size() <= 0) {
-            carRepository.saveAll(JsonReader.getCarsFromJson(makeRepository, modelRepository));
-        }
-
-
-
-
-        //listingRepository.saveAll(GenerateFakeListings(true, 100));
-       // Car c = carRepository.findById(1184269).get();
-//        Listing l11 = new Listing("60b0dd2038366f397d145041","Car 1","A car 1",22,692,Status.ACTIVE, c,new Date());
-//        Listing l12 = new Listing("60b0dd2038366f397d145041","Car 2","A car 2",555,691, Status.ACTIVE, c,new Date());
-//        Listing l13 = new Listing("60b0dd2038366f397d145041","Car 3","A car 3",444,696, Status.ACTIVE, c, new Date());
-//
-//        listingRepository.save(l11);
-//        listingRepository.save(l12);
-//        listingRepository.save(l13);
+        Car c = carRepository.findById(14940).get();
+        Listing l = new Listing("TEST-SELLER","Test listing","Test listing",1234,1234, Status.ACTIVE, c, new Date());
 
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.

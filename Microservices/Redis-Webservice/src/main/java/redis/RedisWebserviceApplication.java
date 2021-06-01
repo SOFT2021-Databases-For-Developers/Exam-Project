@@ -15,7 +15,8 @@ public class RedisWebserviceApplication {
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
-        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("localhost", 6379);
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("redis", 6379);
+        //RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("localhost", 6379);
         redisStandaloneConfiguration.setPassword("sOmE_sEcUrE_pAsS");
         return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
