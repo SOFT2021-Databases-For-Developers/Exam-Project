@@ -1,0 +1,5 @@
+redis\models\SessionObject.class
+redis\RedisWebserviceApplication.class
+redis\controllers\SessionController.class
+redis\repository\SessionRepository.class
+redis\repository\SessionRepositoryImpl.class
