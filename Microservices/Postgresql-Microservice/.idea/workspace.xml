@@ -23,21 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6b484f8-02c9-48a9-b82a-9bd454720646" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../ApiGateway/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Neo4j-Webservice/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ApiGateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../ApiGateway/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Mongo-Microservice/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Neo4j-Webservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Neo4j-Webservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Neo4j-Webservice/src/main/java/neo4j/neo4jwebservice/Querys/Neo4jQuerys.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Neo4j-Webservice/src/main/java/neo4j/neo4jwebservice/Querys/Neo4jQuerys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Neo4j-Webservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Neo4j-Webservice/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/postgresql-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/postgresql-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Redis-Webservice/docker/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Redis-Webservice/docker/demo-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Redis-Webservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Redis-Webservice/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Redis-Webservice/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Redis-Webservice/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Redis-Webservice/target/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Redis-Webservice/target/demo-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Redis-Webservice/target/demo-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../Redis-Webservice/target/demo-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +132,7 @@
       <workItem from="1622358809983" duration="3102000" />
       <workItem from="1622363281965" duration="2235000" />
       <workItem from="1622367686584" duration="1622000" />
-      <workItem from="1622539733347" duration="8381000" />
+      <workItem from="1622539733347" duration="8536000" />
     </task>
     <servers />
   </component>
@@ -198,38 +184,38 @@
       <screen x="0" y="0" width="1825" height="987" />
     </state>
     <state x="692" y="248" key="FileChooserDialogImpl/0.0.1825.987@0.0.1825.987" timestamp="1622129399201" />
-    <state width="1781" height="234" key="GridCell.Tab.0.bottom" timestamp="1622545497209">
+    <state width="1781" height="234" key="GridCell.Tab.0.bottom" timestamp="1622549992763">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.0.bottom/0.0.1825.987@0.0.1825.987" timestamp="1622545497209" />
-    <state width="1781" height="234" key="GridCell.Tab.0.center" timestamp="1622545497209">
+    <state width="1781" height="234" key="GridCell.Tab.0.bottom/0.0.1825.987@0.0.1825.987" timestamp="1622549992763" />
+    <state width="1781" height="234" key="GridCell.Tab.0.center" timestamp="1622549992762">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.0.center/0.0.1825.987@0.0.1825.987" timestamp="1622545497209" />
-    <state width="1781" height="234" key="GridCell.Tab.0.left" timestamp="1622545497208">
+    <state width="1781" height="234" key="GridCell.Tab.0.center/0.0.1825.987@0.0.1825.987" timestamp="1622549992762" />
+    <state width="1781" height="234" key="GridCell.Tab.0.left" timestamp="1622549992762">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.0.left/0.0.1825.987@0.0.1825.987" timestamp="1622545497208" />
-    <state width="1781" height="234" key="GridCell.Tab.0.right" timestamp="1622545497209">
+    <state width="1781" height="234" key="GridCell.Tab.0.left/0.0.1825.987@0.0.1825.987" timestamp="1622549992762" />
+    <state width="1781" height="234" key="GridCell.Tab.0.right" timestamp="1622549992763">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.0.right/0.0.1825.987@0.0.1825.987" timestamp="1622545497209" />
-    <state width="1781" height="234" key="GridCell.Tab.1.bottom" timestamp="1622545497209">
+    <state width="1781" height="234" key="GridCell.Tab.0.right/0.0.1825.987@0.0.1825.987" timestamp="1622549992762" />
+    <state width="1781" height="234" key="GridCell.Tab.1.bottom" timestamp="1622549992764">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.1.bottom/0.0.1825.987@0.0.1825.987" timestamp="1622545497209" />
-    <state width="1781" height="234" key="GridCell.Tab.1.center" timestamp="1622545497209">
+    <state width="1781" height="234" key="GridCell.Tab.1.bottom/0.0.1825.987@0.0.1825.987" timestamp="1622549992764" />
+    <state width="1781" height="234" key="GridCell.Tab.1.center" timestamp="1622549992763">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.1.center/0.0.1825.987@0.0.1825.987" timestamp="1622545497209" />
-    <state width="1781" height="234" key="GridCell.Tab.1.left" timestamp="1622545497209">
+    <state width="1781" height="234" key="GridCell.Tab.1.center/0.0.1825.987@0.0.1825.987" timestamp="1622549992763" />
+    <state width="1781" height="234" key="GridCell.Tab.1.left" timestamp="1622549992763">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.1.left/0.0.1825.987@0.0.1825.987" timestamp="1622545497209" />
-    <state width="1781" height="234" key="GridCell.Tab.1.right" timestamp="1622545497209">
+    <state width="1781" height="234" key="GridCell.Tab.1.left/0.0.1825.987@0.0.1825.987" timestamp="1622549992763" />
+    <state width="1781" height="234" key="GridCell.Tab.1.right" timestamp="1622549992763">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
-    <state width="1781" height="234" key="GridCell.Tab.1.right/0.0.1825.987@0.0.1825.987" timestamp="1622545497209" />
+    <state width="1781" height="234" key="GridCell.Tab.1.right/0.0.1825.987@0.0.1825.987" timestamp="1622549992763" />
     <state width="1781" height="282" key="GridCell.Tab.2.bottom" timestamp="1622294592174">
       <screen x="0" y="0" width="1825" height="987" />
     </state>
