@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Table(name = "models")
 public class Model implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
     private String name;
