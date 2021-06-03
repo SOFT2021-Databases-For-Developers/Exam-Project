@@ -44,12 +44,14 @@ public class PersonController {
     }
 
     @GetMapping("/{username}")
+    @CrossOrigin(origins = "*")
     public List<Recommendation> getRecommendations(@PathVariable String username)
     {
         return neo4jQuerys.getRecommendationsForPerson(username);
     }
 
     @PostMapping()
+    @CrossOrigin(origins = "*")
     public void addData(@RequestBody RecommendationPost post)
     {
         neo4jQuerys.createRecommendation(post);

@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MongoOrdersController {
 
     private final MongoService mongoService;
@@ -32,7 +32,6 @@ public class MongoOrdersController {
     }
 
     @GetMapping("")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<OrderDTO>> getOrders() {
         Collection<Order> l = mongoService.getOrders();
         Collection<OrderDTO> orderDTOS = new ArrayList<>();
@@ -69,7 +68,6 @@ public class MongoOrdersController {
     }
 
     @GetMapping("/user/{id}")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<OrderDTO>> getOrdersForUser(@PathVariable String id) {
         Collection<Order> l = mongoService.getOrdersByUser(id);
         Collection<OrderDTO> orderDTOS = new ArrayList<>();

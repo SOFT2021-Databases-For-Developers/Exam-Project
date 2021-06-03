@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/session")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RedisSessionController {
     private final RedisService redisService;
 

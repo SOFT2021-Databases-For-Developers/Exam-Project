@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/recommendation")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Neo4jRecommendationController {
     private final Neo4jService neo4jService;
 

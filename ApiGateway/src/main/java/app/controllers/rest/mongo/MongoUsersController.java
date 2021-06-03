@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MongoUsersController {
     private final MongoService mongoService;
     private final PostgresqlService postgresqlService;
@@ -29,7 +29,6 @@ public class MongoUsersController {
     }
 
     @GetMapping("")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<User>> getUsers() {
         Collection<User> l = mongoService.getUsers();
         if (l.size() != 0) {
@@ -40,7 +39,6 @@ public class MongoUsersController {
     }
 
     @GetMapping("/{id}")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<User> getUserById(@PathVariable String id) {
         User u = mongoService.getUserById(id);
         if(u != null ) {
@@ -80,7 +78,6 @@ public class MongoUsersController {
 
 
     @PostMapping("/login")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<UserDTO> loginUser(@RequestBody User user) {
         UserDTO foundUser = mongoService.loginUser(user);
         if(foundUser != null) {
@@ -91,7 +88,6 @@ public class MongoUsersController {
     }
 
     @PostMapping("")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         return new ResponseEntity<>(mongoService.createUser(user), HttpStatus.CREATED);
     }

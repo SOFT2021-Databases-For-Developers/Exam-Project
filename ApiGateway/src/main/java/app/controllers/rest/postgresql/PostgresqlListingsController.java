@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("listings")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostgresqlListingsController {
     private final PostgresqlService postgresqlService;
     private final MongoService mongoService;
@@ -27,14 +28,12 @@ public class PostgresqlListingsController {
     }
 
     @GetMapping("")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Page<Listing>> getListingsPaginated(Pageable pageable) {
         Page<Listing> l = postgresqlService.getListings(pageable);
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
     @GetMapping("/make/{name}")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Collection<Listing>> getListingsPaginatedByMake(@PathVariable String name) {
         Collection<Listing> l = postgresqlService.getListingsByMake(name);
         return new ResponseEntity<>(l, HttpStatus.OK);
@@ -44,7 +43,6 @@ public class PostgresqlListingsController {
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Listing> getListing(@PathVariable int id) {
         Listing l = postgresqlService.getListingsById(id);
         if (l != null) {
@@ -55,7 +53,6 @@ public class PostgresqlListingsController {
     }
 
     @PostMapping("")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Listing> createListing(@RequestBody Listing listing) {
         User _user = mongoService.getUserById(listing.getSeller());
         System.out.println(_user);
@@ -75,7 +72,6 @@ public class PostgresqlListingsController {
     }
 
     @PutMapping("/{id}")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<Listing> updateListing(@PathVariable("id") int id, @RequestBody Listing listing) {
         Listing fetchedListing = postgresqlService.getListingsById(id);
         if (fetchedListing != null) {
@@ -102,7 +98,6 @@ public class PostgresqlListingsController {
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<HttpStatus> deleteListing(@PathVariable("id") int id) {
         try {
             postgresqlService.deleteListingById(id);
