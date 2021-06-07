@@ -9,16 +9,12 @@ import NavigationBar from './bilbakkencomponents/NavigationBar'
 import ListingsScreen from './bilbakkencomponents/ListingsScreen'
 import CreateListingScreen from './bilbakkencomponents/CreateListingScreen'
 import ShoppingCartScreen from './bilbakkencomponents/ShoppingCartScreen'
+import OrdersScreen from './bilbakkencomponents/OrdersScreen'
 
 
 function App() {
 
-    const [ token, setToken ] = useState({
-      "id": "60b8c1688a7a7d481959ffc2",
-      "firstName": "Jonatan",
-      "lastName": "Jonatan",
-      "email": "jonatan@root.com"
-  });
+    const [ token, setToken ] = useState();
 
     const saveToken = (tmp) => {
       setToken(tmp)
@@ -45,8 +41,12 @@ function App() {
             </Route>
             <Route path="/createlisting">
               <CreateListingScreen token={token}/>
-            </Route><Route path="/shoppingcart">
+            </Route>
+            <Route path="/shoppingcart">
               <ShoppingCartScreen token={token}/>
+            </Route>
+            <Route path="/orders">
+              <OrdersScreen token={token}/>
             </Route>
           </Switch>
         </BrowserRouter>

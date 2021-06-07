@@ -29,7 +29,21 @@ const ShoppingCartScreen = (props) => {
         fetchListings();
     }, []);
 
-    
+    const postOrder = async() => {
+        let body = {
+            "user": props.token,
+            "listingIds": list
+        }
+        let res = await axios.post('http://localhost:25000/orders/', body)
+        console.log(res)
+        if(res.status == 201)
+        {
+            deleteShoppingCart()
+            alert("Bought")
+        }
+
+        
+    }
     
     return (
         <div>
@@ -37,6 +51,7 @@ const ShoppingCartScreen = (props) => {
                 <p>{item}</p>
             ))}
             <button onClick={() => deleteShoppingCart()} >Clear shopping cart</button>
+            <button onClick={() => postOrder()} >Buy</button>
         </div>
     )
 }

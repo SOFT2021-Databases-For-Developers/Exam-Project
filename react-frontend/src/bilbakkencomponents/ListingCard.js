@@ -32,11 +32,19 @@ const ListingsCard = (props) => {
         }
         axios.post('http://localhost:25000/session/', body)
     }
-    
-    return (
-        <div onClick={() => click()}>
+    const checkIfSold = () => {
+        if(props.listing.status != "SOLD")
+        {
+            return (<div onClick={() => click()}>
             <p>{props.title} id:{props.listing.id} <button onClick={() => addToCart()}>Add to cart</button></p>
             
+        </div>)
+        }
+    }
+    
+    return (
+        <div>
+            {checkIfSold()}
         </div>
     )
 }

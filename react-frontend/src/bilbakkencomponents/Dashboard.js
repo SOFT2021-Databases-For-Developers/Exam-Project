@@ -35,7 +35,7 @@ const Dashboard = (props) => {
         <div>
             {list.map(item => (
                 <div>
-                  <h3>{item.make} {item.count}</h3>
+                  <h4>{item.make} {item.count}</h4>
                   <RecommendationList make={item.make} token={props.token}/>
                 </div>
             ))}
