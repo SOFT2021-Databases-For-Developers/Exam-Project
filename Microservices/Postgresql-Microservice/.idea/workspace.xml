@@ -23,9 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6b484f8-02c9-48a9-b82a-9bd454720646" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../ApiGateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../ApiGateway/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,7 @@
       <workItem from="1622363281965" duration="2235000" />
       <workItem from="1622367686584" duration="1622000" />
       <workItem from="1622539733347" duration="8536000" />
-      <workItem from="1622551759004" duration="5164000" />
+      <workItem from="1622551759004" duration="5834000" />
     </task>
     <servers />
   </component>
